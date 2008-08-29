@@ -3,6 +3,11 @@
 # $Header: $
 
   29 Aug 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  scripts/ss_netapp.php:
+  Move the splitting of the snmp_auth variable to a function, so we can
+  easily re-use it within each of the main functions of the script.
+
+  29 Aug 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   +script_server/netapp-luns.xml, +scripts/get_netapp_cifs_ops.pl,
   +scripts/get_netapp_fcp_ops.pl, +scripts/get_netapp_fcp_reads.pl,
   +scripts/get_netapp_fcp_writes.pl, +scripts/get_netapp_http_ops.pl,
