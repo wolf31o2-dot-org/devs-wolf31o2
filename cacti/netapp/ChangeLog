@@ -1,0 +1,15 @@
+# ChangeLog for NetApp Cacti scripts
+# Copyright 2008-2008 Chris Gianelloni; Distributed under the GPL v2
+# $Header: $
+
+  29 Aug 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  +script_server/netapp-luns.xml, +scripts/get_netapp_cifs_ops.pl,
+  +scripts/get_netapp_fcp_ops.pl, +scripts/get_netapp_fcp_reads.pl,
+  +scripts/get_netapp_fcp_writes.pl, +scripts/get_netapp_http_ops.pl,
+  +scripts/get_netapp_iscsi_ops.pl, +scripts/get_netapp_iscsi_reads.pl,
+  +scripts/get_netapp_iscsi_writes.pl, +scripts/get_netapp_nfs_ops.pl,
+  +scripts/ss_netapp.php, +templates/cacti_host_template_netapp_filer.xml:
+  Initial import of the scripts that I've been using for monitoring my
+  NetApp filers. This needs to be cleaned up and the perl scripts need to be
+  rolled into the ss_netapp.php script server file.
+
