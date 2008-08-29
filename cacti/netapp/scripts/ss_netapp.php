@@ -159,6 +159,18 @@ function ss_netapp_luns($hostname, $snmp_auth, $cmd, $arg1 = "", $arg2 = "") {
 	}
 }
 
+function ss_netapp_licenses($hostname, $snmp_auth) {
+	ss_netapp_split_snmp $snmp_auth;
+	$baseOID = ".1.3.6.1.4.1.789";
+
+	$oids = array(
+		"nfs"	=> ".1.3.3.1.0",
+		"cifs"	=> ".1.7.1.21.0",
+		"fcp"	=> ".1.17.1.0",
+		"iscsi"	=> ".1.17.2.0"
+	);
+}
+
 function ss_netapp_split_snmp($snmp_auth) {
 	$snmp						= explode(":", $snmp_auth);
 	$snmp_version				= $snmp[0];
@@ -185,7 +197,6 @@ function ss_netapp_split_snmp($snmp_auth) {
 	}
 	return $snmp;
 }
-
 
 function ss_netapp_add_high_low($type, $arg, $hostname, $snmp_community, $oids, $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol,$snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, $arg1 = "") {
 	if ($type == "query") {

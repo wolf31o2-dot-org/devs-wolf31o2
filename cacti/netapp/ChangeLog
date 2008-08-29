@@ -4,6 +4,11 @@
 
   29 Aug 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   scripts/ss_netapp.php:
+  Adding the initial part of my license-checking function, to be used later
+  to determine what graphs are available.
+
+  29 Aug 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  scripts/ss_netapp.php:
   Move the splitting of the snmp_auth variable to a function, so we can
   easily re-use it within each of the main functions of the script.
 
