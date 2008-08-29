@@ -1,0 +1,10 @@
+# ChangeLog for Apache Cacti scripts
+# Copyright 2008-2008 Chris Gianelloni; Distributed under the GPL v2
+# $Header: $
+
+  29 Aug 2008; Chris Gianelloni <wolf31o2@wolf31o2.org> +ss_apache.php:
+  Initial import of an Apache stats gathering script. This is a
+  work-in-progress, as it doesn't currently function, but I wanted to get
+  what I had into Git so I didn't lose it among the piles of half-finished
+  scripts on my laptop.
+
