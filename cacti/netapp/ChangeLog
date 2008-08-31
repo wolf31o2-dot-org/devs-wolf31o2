@@ -2,6 +2,10 @@
 # Copyright 2008-2008 Chris Gianelloni; Distributed under the GPL v2
 # $Header: $
 
+  31 Aug 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  scripts/ss_netapp.php:
+  Finish up the ss_netapp_lincenses function and do some minor edits.
+
   29 Aug 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   scripts/ss_netapp.php:
   Adding the initial part of my license-checking function, to be used later

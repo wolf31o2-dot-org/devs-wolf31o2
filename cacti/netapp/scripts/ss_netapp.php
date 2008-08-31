@@ -159,6 +159,9 @@ function ss_netapp_luns($hostname, $snmp_auth, $cmd, $arg1 = "", $arg2 = "") {
 	}
 }
 
+# ============================================================================
+# This function gets a list of licensed products.
+# ============================================================================
 function ss_netapp_licenses($hostname, $snmp_auth) {
 	ss_netapp_split_snmp $snmp_auth;
 	$baseOID = ".1.3.6.1.4.1.789";
@@ -169,8 +172,30 @@ function ss_netapp_licenses($hostname, $snmp_auth) {
 		"fcp"	=> ".1.17.1.0",
 		"iscsi"	=> ".1.17.2.0"
 	);
+
+	$keys = array(
+		"cifs",
+		"fcp",
+		"iscsi",
+		"nfs"
+	);
+
+	$status = array(
+		"cifs"	=> 0,
+		"fcp"	=> 0,
+		"iscsi"	=> 0,
+		"nfs"	=> 0
+	);
+
+	foreach ($keys as $key) {
+		$status[$key] = cacti_snmp_get($hostname, $snmp_community, $oids[$key], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
+	}
+	return $status;
 }
 
+# ============================================================================
+# This function splits the snmp_auth variable into the various SNMP options.
+# ============================================================================
 function ss_netapp_split_snmp($snmp_auth) {
 	$snmp						= explode(":", $snmp_auth);
 	$snmp_version				= $snmp[0];
@@ -198,6 +223,10 @@ function ss_netapp_split_snmp($snmp_auth) {
 	return $snmp;
 }
 
+# ============================================================================
+# This function takes the highest and lowest significant 32-bits and adds them
+# together into a single 64-bit integer.
+# ============================================================================
 function ss_netapp_add_high_low($type, $arg, $hostname, $snmp_community, $oids, $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol,$snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, $arg1 = "") {
 	if ($type == "query") {
 		$high_arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $oids["h" . $arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
@@ -217,6 +246,9 @@ function ss_netapp_add_high_low($type, $arg, $hostname, $snmp_community, $oids, 
 	}
 }
 
+# ============================================================================
+# This function reindexes an array.
+# ============================================================================
 function ss_netapp_reindex($arr) {
 	$return_arr = array();
 
