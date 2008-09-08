@@ -1,8 +1,10 @@
 <?php
 
-# cacti script to read stats from NetApp filers.
+# cacti script to read stats from NetApp filers
+
 #$cache_dir = '/var/tmp';	# If set, this uses caching to avoid multiple calls.
 $poll_time = 60;			# Adjust to match your polling interval.
+
 # ============================================================================
 # You should not need to change anything below this line.
 # ============================================================================
@@ -75,6 +77,7 @@ function ss_netapp_luns($hostname, $snmp_auth, $cmd, $arg1 = "", $arg2 = "") {
 	$oids = array(
 		"index"		=> $lunTable . ".1.1",
 		"name"		=> $lunTable . ".1.2",
+		"descr"		=> $lunTable . ".1.3",
 		"lsize"		=> $lunTable . ".1.4",
 		"hsize"		=> $lunTable . ".1.5",
 		"hops"		=> $lunTable . ".1.9",
@@ -157,6 +160,76 @@ function ss_netapp_luns($hostname, $snmp_auth, $cmd, $arg1 = "", $arg2 = "") {
 				return ss_netapp_add_high_low($cmd, $arg, $hostname, $snmp_community, $oids, $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, $index);
 		}
 	}
+}
+
+# ============================================================================
+# This function is a stub.
+# ============================================================================
+function ss_netapp_cifs_ops($hostname, $snmp_auth) {
+	ss_netapp_split_snmp $snmp_auth;
+	$baseOID = ".1.3.6.1.4.1.789";
+
+	$oids = array();
+	$keys = array();
+	$status = array();
+
+	return $status;
+}
+
+# ============================================================================
+# This function is a stub.
+# ============================================================================
+function ss_netapp_fcp_ops($hostname, $snmp_auth) {
+	ss_netapp_split_snmp $snmp_auth;
+	$baseOID = ".1.3.6.1.4.1.789";
+
+	$oids = array();
+	$keys = array();
+	$status = array();
+
+	return $status;
+}
+
+# ============================================================================
+# This function is a stub.
+# ============================================================================
+function ss_netapp_http_ops($hostname, $snmp_auth) {
+	ss_netapp_split_snmp $snmp_auth;
+	$baseOID = ".1.3.6.1.4.1.789";
+
+	$oids = array();
+	$keys = array();
+	$status = array();
+
+	return $status;
+}
+
+# ============================================================================
+# This function is a stub.
+# ============================================================================
+function ss_netapp_iscsi_ops($hostname, $snmp_auth) {
+	ss_netapp_split_snmp $snmp_auth;
+	$baseOID = ".1.3.6.1.4.1.789";
+
+	$oids = array();
+	$keys = array();
+	$status = array();
+
+	return $status;
+}
+
+# ============================================================================
+# This function is a stub.
+# ============================================================================
+function ss_netapp_nfs_ops($hostname, $snmp_auth) {
+	ss_netapp_split_snmp $snmp_auth;
+	$baseOID = ".1.3.6.1.4.1.789";
+
+	$oids = array();
+	$keys = array();
+	$status = array();
+
+	return $status;
 }
 
 # ============================================================================
