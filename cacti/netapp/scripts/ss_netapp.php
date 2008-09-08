@@ -165,7 +165,7 @@ function ss_netapp_luns($hostname, $snmp_auth, $cmd, $arg1 = "", $arg2 = "") {
 # ============================================================================
 # This function is a stub.
 # ============================================================================
-function ss_netapp_cifs_ops($hostname, $snmp_auth) {
+function ss_netapp_cifs($hostname, $snmp_auth) {
 	ss_netapp_split_snmp $snmp_auth;
 	$baseOID = ".1.3.6.1.4.1.789";
 
@@ -179,7 +179,7 @@ function ss_netapp_cifs_ops($hostname, $snmp_auth) {
 # ============================================================================
 # This function is a stub.
 # ============================================================================
-function ss_netapp_fcp_ops($hostname, $snmp_auth) {
+function ss_netapp_fcp($hostname, $snmp_auth) {
 	ss_netapp_split_snmp $snmp_auth;
 	$baseOID = ".1.3.6.1.4.1.789";
 
@@ -193,7 +193,7 @@ function ss_netapp_fcp_ops($hostname, $snmp_auth) {
 # ============================================================================
 # This function is a stub.
 # ============================================================================
-function ss_netapp_http_ops($hostname, $snmp_auth) {
+function ss_netapp_http($hostname, $snmp_auth) {
 	ss_netapp_split_snmp $snmp_auth;
 	$baseOID = ".1.3.6.1.4.1.789";
 
@@ -207,7 +207,7 @@ function ss_netapp_http_ops($hostname, $snmp_auth) {
 # ============================================================================
 # This function is a stub.
 # ============================================================================
-function ss_netapp_iscsi_ops($hostname, $snmp_auth) {
+function ss_netapp_iscsi($hostname, $snmp_auth) {
 	ss_netapp_split_snmp $snmp_auth;
 	$baseOID = ".1.3.6.1.4.1.789";
 
@@ -221,7 +221,7 @@ function ss_netapp_iscsi_ops($hostname, $snmp_auth) {
 # ============================================================================
 # This function is a stub.
 # ============================================================================
-function ss_netapp_nfs_ops($hostname, $snmp_auth) {
+function ss_netapp_nfs($hostname, $snmp_auth) {
 	ss_netapp_split_snmp $snmp_auth;
 	$baseOID = ".1.3.6.1.4.1.789";
 

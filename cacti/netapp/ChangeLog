@@ -4,6 +4,11 @@
 
   08 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   cacti/netapp/scripts/ss_netapp.php:
+  Removing _ops from function stubs, since I am planning on making them
+  queries, based on the availability of the licenses on the filer.
+
+  08 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/netapp/scripts/ss_netapp.php:
   Add description to the oids array for LUN stats and adding stub functions
   for CIFS/FCP/HTTP/iSCSI/NFS operations stats.
 
