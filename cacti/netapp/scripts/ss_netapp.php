@@ -183,9 +183,26 @@ function ss_netapp_fcp($hostname, $snmp_auth) {
 	ss_netapp_split_snmp $snmp_auth;
 	$baseOID = ".1.3.6.1.4.1.789";
 
-	$oids = array();
-	$keys = array();
-	$status = array();
+	$oids = array(
+		"lrbytes"	=> $baseOID . ".1.17.3.0",
+		"hrbytes"	=> $baseOID . ".1.17.4.0",
+		"lwbytes"	=> $baseOID . ".1.17.5.0",
+		"hwbytes"	=> $baseOID . ".1.17.6.0",
+		"hops"		=> $baseOID . ".1.17.13.0",
+		"lops"		=> $baseOID . ".1.17.14.0",
+	);
+
+	$keys = array(
+		"rbytes",
+		"wbytes",
+		"ops"
+	);
+
+	$status = array(
+		"rbytes"	=> 0,
+		"wbytes"	=> 0,
+		"ops"		=> 0
+	);
 
 	return $status;
 }

@@ -4,6 +4,12 @@
 
   09 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   cacti/netapp/scripts/ss_netapp.php:
+  Adding the OIDs for the FCP checking and filling in the keys and status
+  arrays. All that we need to do now is check if we're licensed and check
+  the actual responses.
+
+  09 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/netapp/scripts/ss_netapp.php:
   Change ss_netapp_licenses to ss_netapp_license and allow us to specifiy a
   license to check. This allows us to more easily use the function in
   queries for a specific type of stats.
