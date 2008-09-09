@@ -67,7 +67,8 @@ if (!isset($called_by_script_server)) {
 }
 
 # ============================================================================
-# This function gets the statistics for each LUN on the filer.
+# This function gets the statistics for each LUN on the filer.  This will need
+# either a FCP license or an iSCSI license.
 # ============================================================================
 function ss_netapp_luns($hostname, $snmp_auth, $cmd, $arg1 = "", $arg2 = "") {
 	ss_netapp_split_snmp $snmp_auth;
@@ -178,7 +179,8 @@ function ss_netapp_cifs($hostname, $snmp_auth) {
 }
 
 # ============================================================================
-# This function is a stub.
+# This function gets the global FCP access statistics from a filer.  It
+# requires an FCP access license to get anything meaningful.
 # ============================================================================
 function ss_netapp_fcp($hostname, $snmp_auth) {
 	ss_netapp_split_snmp $snmp_auth;

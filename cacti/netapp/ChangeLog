@@ -4,6 +4,11 @@
 
   09 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   cacti/netapp/scripts/ss_netapp.php:
+  Adding notes about which licenses are required for a given function for
+  the LUN and FCP functions.
+
+  09 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/netapp/scripts/ss_netapp.php:
   Adding a comment to remind me to make the script run everything when
   called without a function name.
 
