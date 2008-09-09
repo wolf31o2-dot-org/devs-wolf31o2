@@ -54,6 +54,7 @@ include_once($config["base_path"] . "/lib/snmp.php");
 # ============================================================================
 if (!isset($called_by_script_server)) {
 	array_shift($_SERVER["argv"]);
+	# TODO: fix this so it calls all of our functions which give usable output
 	$result = call_user_func_array("ss_netapp_luns", $_SERVER["argv"]);
 	if (!$debug) {
 		# Throw away the buffer, which ought to contain only errors.
