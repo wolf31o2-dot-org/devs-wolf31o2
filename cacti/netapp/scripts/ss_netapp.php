@@ -233,9 +233,11 @@ function ss_netapp_nfs($hostname, $snmp_auth) {
 }
 
 # ============================================================================
-# This function gets a list of licensed products.
+# This function is used to determine if we are licensed for the requested
+# NetApp license.  If the license isn't specified, we check everything that
+# we support, which is currently CIFS, FCP, iSCSI, and NFS.
 # ============================================================================
-function ss_netapp_licenses($hostname, $snmp_auth) {
+function ss_netapp_license($hostname, $snmp_auth, $arg1="") {
 	ss_netapp_split_snmp $snmp_auth;
 	$baseOID = ".1.3.6.1.4.1.789";
 
@@ -260,8 +262,22 @@ function ss_netapp_licenses($hostname, $snmp_auth) {
 		"nfs"	=> 0
 	);
 
-	foreach ($keys as $key) {
-		$status[$key] = cacti_snmp_get($hostname, $snmp_community, $oids[$key], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
+	$license = $arg1;
+	if ($license) {
+		foreach ($keys as $key) {
+			if ($license == $key) {
+				$license_supported = 1;
+			}
+		}
+		if ($license_supported) {
+			$status[$key] = cacti_snmp_get($hostname, $snmp_community, $oids[$key], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
+		} else {
+			die("License type not supported.");
+		}
+	} else {
+		foreach ($keys as $key) {
+			$status[$key] = cacti_snmp_get($hostname, $snmp_community, $oids[$key], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
+		}
 	}
 	return $status;
 }
