@@ -2,6 +2,12 @@
 # Copyright 2008-2008 Chris Gianelloni; Distributed under the GPL v2
 # $Header: $
 
+  09 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/netapp/scripts/ss_netapp.php:
+  Change ss_netapp_licenses to ss_netapp_license and allow us to specifiy a
+  license to check. This allows us to more easily use the function in
+  queries for a specific type of stats.
+
   08 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   cacti/netapp/scripts/ss_netapp.php:
   Removing _ops from function stubs, since I am planning on making them
