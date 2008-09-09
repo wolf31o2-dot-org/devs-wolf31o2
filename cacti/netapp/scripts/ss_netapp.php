@@ -66,7 +66,7 @@ if (!isset($called_by_script_server)) {
 }
 
 # ============================================================================
-# This is the main function.
+# This function gets the statistics for each LUN on the filer.
 # ============================================================================
 function ss_netapp_luns($hostname, $snmp_auth, $cmd, $arg1 = "", $arg2 = "") {
 	ss_netapp_split_snmp $snmp_auth;
@@ -102,11 +102,11 @@ function ss_netapp_luns($hostname, $snmp_auth, $cmd, $arg1 = "", $arg2 = "") {
 		"name",
 		"size", # lsize + hsize
 		"ops", # hops + lops
-		"rops", # hreado + lreado
-		"wops", # hwriteo + lwriteo
-		"oops", # hothero + lothero
-		"rbytes", # hreadb + lreadb
-		"wbytes", # hwriteb + lwriteb
+		"rops", # hrops + lrops
+		"wops", # hwops + lwops
+		"oops", # hoops + loops
+		"rbytes", # hrbytes + lrbytes
+		"wbytes", # hwbytes + lwbytes
 		"errors" # herrors + lerrors
 	);
 
