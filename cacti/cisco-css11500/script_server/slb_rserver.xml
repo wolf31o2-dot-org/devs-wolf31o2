@@ -1,0 +1,78 @@
+<interface>
+	<name>Cisco SLB RealServer</name>
+	<script_path>|path_php_binary| -q |path_cacti|/scripts/ss_slb_rserver.php</script_path>
+	<script_function>ss_slb_rserver</script_function>
+	<arg_prepend>|host_hostname| |host_id| |host_snmp_version|:|host_snmp_port|:|host_snmp_timeout|:|host_snmp_community|:|host_snmp_username|:|host_snmp_password|:MD5::[None]</arg_prepend>
+	<arg_index>index</arg_index>
+	<arg_query>query</arg_query>
+	<arg_get>get</arg_get>
+        <arg_num_indexes>num_indexes</arg_num_indexes>
+	<output_delimeter>!</output_delimeter>
+	<index_order_type>alphabetic</index_order_type>
+	<index_title_format>|chosen_order_field|</index_title_format>
+
+	<fields>
+		<RealServer>
+			<name>Real Server</name>
+			<direction>input</direction>
+			<query_name>RServer</query_name>
+		</RealServer>
+		<Module>
+			<name>Module Number</name>
+			<direction>input</direction>
+			<query_name>Module</query_name>
+		</Module>
+		<RName>
+			<name>Real Server Name</name>
+			<direction>input</direction>
+			<query_name>RName</query_name>
+		</RName>
+		<Port>
+			<name>Real Server Port</name>
+			<direction>input</direction>
+			<query_name>Port</query_name>
+		</Port>
+		<Cata>
+			<name>Catalyst Name</name>
+			<direction>input</direction>
+			<query_name>Cata</query_name>
+		</Cata>
+		<IX>
+			<name>Sub Index</name>
+			<direction>input</direction>
+			<query_name>IX</query_name>
+		</IX>
+		<ID>
+			<name>OID Index</name>
+			<direction>input</direction>
+			<query_name>ID</query_name>
+		</ID>
+
+
+
+		<slbRealTotalFails>
+			<name>Number Of Total Fails</name>
+			<direction>output</direction>
+			<query_name>TotalFails</query_name>
+		</slbRealTotalFails>
+
+                <slbRealHCTotalConnections>
+                        <name>Total Connections 64bit</name>
+                        <direction>output</direction>
+                        <query_name>HCTotal</query_name>
+                </slbRealHCTotalConnections>
+
+               <slbRealNumberOfConnections>
+                        <name>Number Of Connections</name>
+                        <direction>output</direction>
+                        <query_name>NumberOfC</query_name>
+                </slbRealNumberOfConnections>
+
+                <slbRealMaxConnections>
+                        <name>Max Connections Set</name>
+                        <direction>output</direction>
+                        <query_name>MaxC</query_name>
+                </slbRealMaxConnections>
+
+	</fields>
+</interface>

@@ -1,0 +1,39 @@
+<interface>
+	<name>Cisco SLB Stats</name>
+	<description>Get Cisco SLB board Stats</description>
+	<oid_index>.1.3.6.1.4.1.9.9.161.1.1.1.1.6</oid_index>
+	<oid_index_parse>OID/REGEXP:.*\.([0-9]{1,2})$</oid_index_parse>
+	<index_order_type>numeric</index_order_type>
+	<index_title_format>|slbModule|</index_title_format>
+	
+	<fields>
+                <slbModule>
+                        <name>SLB Module #</name>
+                        <method>walk</method>
+                        <source>OID/REGEXP:.*\.([0-9]{1,2})$</source>
+                        <direction>input</direction>
+                        <oid>.1.3.6.1.4.1.9.9.161.1.1.1.1.6</oid>
+                </slbModule>
+                <slbStatsCreatedHCC>
+                        <name>SLB Created Connections</name>
+                        <method>walk</method>
+                        <source>index</source>
+                        <direction>output</direction>
+                        <oid>.1.3.6.1.4.1.9.9.161.1.1.1.1.7</oid>
+                </slbStatsCreatedHCC>
+                <slbStatsEstablishedHCC>
+                        <name>SLB Established Connections</name>
+                        <method>walk</method>
+                        <source>index</source>
+                        <direction>output</direction>
+                        <oid>.1.3.6.1.4.1.9.9.161.1.1.1.1.9</oid>
+                </slbStatsEstablishedHCC>
+                <slbStatsDestroyedHCC>
+                        <name>SLB Destroyed Connections</name>
+                        <method>walk</method>
+                        <source>index</source>
+                        <direction>output</direction>
+                        <oid>.1.3.6.1.4.1.9.9.161.1.1.1.1.11</oid>
+                </slbStatsDestroyedHCC>
+	</fields>
+</interface>

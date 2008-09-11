@@ -1,0 +1,62 @@
+<interface>
+	<name>Cisco SLB VirtualServer</name>
+	<script_path>|path_php_binary| -q |path_cacti|/scripts/ss_slb_vserver.php</script_path>
+	<script_function>ss_slb_vserver</script_function>
+	<arg_prepend>|host_hostname| |host_id| |host_snmp_version|:|host_snmp_port|:|host_snmp_timeout|:|host_snmp_community|:|host_snmp_username|:|host_snmp_password|:MD5::[None]</arg_prepend>
+	<arg_index>index</arg_index>
+	<arg_query>query</arg_query>
+	<arg_get>get</arg_get>
+        <arg_num_indexes>num_indexes</arg_num_indexes>
+	<output_delimeter>!</output_delimeter>
+	<index_order_type>alphabetic</index_order_type>
+	<index_title_format>|chosen_order_field|</index_title_format>
+
+	<fields>
+		<VirtualServer>
+			<name>Virtual Server Name</name>
+			<direction>input</direction>
+			<query_name>VServer</query_name>
+		</VirtualServer>
+		<Module>
+			<name>Module Number</name>
+			<direction>input</direction>
+			<query_name>Module</query_name>
+		</Module>
+		<VName>
+			<name>VIP Hostname</name>
+			<direction>input</direction>
+			<query_name>VName</query_name>
+		</VName>
+		<Cata>
+			<name>Catalyst Name</name>
+			<direction>input</direction>
+			<query_name>Cata</query_name>
+		</Cata>
+		<slbVirtualFarmName>
+			<name>Farm Name</name>
+			<direction>input</direction>
+			<query_name>FarmName</query_name>
+		</slbVirtualFarmName>
+		<slbVirtualIpAddress>
+			<name>Ip Address</name>
+			<direction>input</direction>
+			<query_name>IpAddress</query_name>
+		</slbVirtualIpAddress>
+		<slbVirtualPort>
+			<name>Port</name>
+			<direction>input</direction>
+			<query_name>Port</query_name>
+		</slbVirtualPort>
+
+		<slbVirtualNumberOfConnections>
+			<name>Number Of Connections</name>
+			<direction>output</direction>
+			<query_name>NumberOfC</query_name>
+		</slbVirtualNumberOfConnections>
+		<slbVirtualHCTotalConnections>
+			<name>Total Connections 64bit</name>
+			<direction>output</direction>
+			<query_name>HCTotal</query_name>
+		</slbVirtualHCTotalConnections>
+	</fields>
+</interface>
