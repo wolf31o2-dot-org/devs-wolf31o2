@@ -2,6 +2,11 @@
 # Copyright 2008-2008 Chris Gianelloni; Distributed under the GPL v2
 # $Header: $
 
+  12 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  -cacti/cisco-css11500/script_server/cisco_slb_stats.xml,
+  +cacti/cisco-css11500/snmp_queries/cisco_slb_stats.xml:
+  Moved cisco_slb_stats.xml to snmp_queries, where it belongs.
+
   11 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org> ChangeLog:
   Initial import. Scripts/Templates originally from
   http://forums.cacti.net/about12448.html and edited by me to work with
