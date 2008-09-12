@@ -3,6 +3,11 @@
 # $Header: $
 
   12 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/cisco-css11500/scripts/ss_slb_vserver.php:
+  Fixing cacti_snmp_get and cacti_snmp_walk calls and switching from spaces
+  to tabs.
+
+  12 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   cacti/cisco-css11500/scripts/ss_slb_rserver.php:
   Fixing cacti_snmp_get and cacti_snmp_walk calls and switching from spaces
   to tabs.
