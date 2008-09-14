@@ -89,8 +89,8 @@ hardcoded into the script)
 
 use Getopt::Long;
 use Pod::Usage;
-use lib '/usr/local/nagios/libexec/';
-use lib '/usr/lib/nagios/plugins/';
+use lib '/usr/nagios/libexec/';
+##use lib '/usr/lib/nagios/plugins/';
 use utils qw(%ERRORS);
 use Net::SNMP;
 
