@@ -4,6 +4,11 @@
 
   14 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   cacti/netapp/scripts/ss_netapp.php:
+  Call our volume function along side the lun function when called without a
+  function argument.
+
+  14 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/netapp/scripts/ss_netapp.php:
   Added ss_netapp_volumes, based on ss_netapp_luns and the old NetApp volume
   checks which used SNMP directly.
 

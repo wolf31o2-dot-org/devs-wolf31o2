@@ -64,6 +64,17 @@ if (!isset($called_by_script_server)) {
 		ob_end_flush();
 	}
 	print($result);
+	# TODO: make this some kind of loop above
+	$result = call_user_func_array("ss_netapp_volumes", $_SERVER["argv"]);
+	if (!$debug) {
+		# Throw away the buffer, which ought to contain only errors.
+		ob_end_clean();
+	} else {
+		# In debugging mode, print out the errors.
+		ob_end_flush();
+	}
+	print($result);
+
 }
 
 # ============================================================================
