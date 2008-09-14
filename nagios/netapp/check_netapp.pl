@@ -29,7 +29,7 @@
 # $Id: check_netapp2,v 2.3 2006/06/05 19:04:05 root Exp $
 use warnings;
 use strict;
-use lib "/usr/local/nagios/libexec";
+use lib "/usr/nagios/libexec";
 use utils qw/$TIMEOUT %ERRORS &print_revision &support/;
 use Net::SNMP;
 use Getopt::Long;

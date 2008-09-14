@@ -3,6 +3,10 @@
 # $Header: $
 
   14 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  nagios/netapp/check_netapp.pl:
+  Change location to match default Nagios 2.x location from Gentoo.
+
+  14 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   +nagios/netapp/check_netapp.pl:
   Initial import. This is check_netapp2 from Erik Welch <ewelch@taos.com>.
 
