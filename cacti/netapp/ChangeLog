@@ -4,6 +4,11 @@
 
   14 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   cacti/netapp/scripts/ss_netapp.php:
+  Added ss_netapp_volumes, based on ss_netapp_luns and the old NetApp volume
+  checks which used SNMP directly.
+
+  14 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/netapp/scripts/ss_netapp.php:
   Adding in SNMP splitting to each function that needs it.
 
   14 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>

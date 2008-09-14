@@ -188,6 +188,183 @@ function ss_netapp_luns($hostname, $snmp_auth, $cmd, $arg1 = "", $arg2 = "") {
 }
 
 # ============================================================================
+# This function pulls volume statistics.  It uses the high and low counters to
+# be more accurate.  The shared and saved stats require an A-SIS license.
+# ============================================================================
+function ss_netapp_volumes($hostname, $snmp_auth, $cmd, $arg1 = "", $arg2 = "") {
+	$snmp						= explode(":", $snmp_auth);
+	$snmp_version				= $snmp[0];
+	$snmp_port					= $snmp[1];
+	$snmp_timeout				= $snmp[2];
+
+	$snmp_auth_username			= "";
+	$snmp_auth_password			= "";
+	$snmp_auth_protocol			= "";
+	$snmp_priv_passphrase		= "";
+	$snmp_priv_protocol			= "";
+	$snmp_context				= "";
+	$snmp_community				= "";
+
+	if ($snmp_version == 3) {
+		$snmp_auth_username		= $snmp[4];
+		$snmp_auth_password		= $snmp[5];
+		$snmp_auth_protocol		= $snmp[6];
+		$snmp_priv_passphrase	= $snmp[7];
+		$snmp_priv_protocol		= $snmp[8];
+		$snmp_context			= $snmp[9];
+	} else {
+		$snmp_community			= $snmp[3];
+	}
+//	ss_netapp_split_snmp $snmp_auth;
+	$baseOID = ".1.3.6.1.4.1.789";
+
+	$volTable = $baseOID . ".1.5.4.1";
+	$oids = array(
+		"index"			=> $volTable . ".1",
+		"name"			=> $volTable . ".2",
+		"percentUsed"	=> $volTable . ".6",
+		"inodeUsed"		=> $volTable . ".7",
+		"inodeFree"		=> $volTable . ".8",
+		"inodeUsedper"	=> $volTable . ".9",
+		"filesFree"		=> $volTable . ".11",
+		"filesUsed"		=> $volTable . ".12",
+		"filesPoss"		=> $volTable . ".13",
+		"hkbtotal"		=> $volTable . ".14",
+		"lkbtotal"		=> $volTable . ".15",
+		"hkbused"		=> $volTable . ".16",
+		"lkbused"		=> $volTable . ".17",
+		"hkbfree"		=> $volTable . ".18",
+		"lkbfree"		=> $volTable . ".19",
+		"hkbshared"		=> $volTable . ".24",
+		"lkbshared"		=> $volTable . ".25",
+		"hkbsaved"		=> $volTable . ".26",
+		"lkbsaved"		=> $volTable . ".27",
+		"percentSaved"	=> $volTable . ".28"
+	);
+
+	# Define the variables to output for each graph.
+	$keys = array(
+		"index",
+		"name",
+		"usedper",
+		"iused",
+		"ifree",
+		"iusedper",
+		"ffree",
+		"fused",
+		"fposs",
+		"kbtotal", # hkbtotal + lkbtotal
+		"kbused", # hkbused + lkbused
+		"kbfree", # hkbfree + lkbfree
+		"kbshared", # hkbshared + lkbshared
+		"kbsaved", # hkbsaved + lkbsaved
+		"savedper"
+	);
+
+	# Process connection options and connect to MySQL.
+	global $debug, $cache_dir, $poll_time;
+
+	# Set up variables
+	$status = array(
+		"usedper"	=> 0,
+		"iused"		=> 0,
+		"ifree"		=> 0,
+		"iusedper"	=> 0,
+		"ffree"		=> 0,
+		"fused"		=> 0,
+		"fposs"		=> 0,
+		"kbtotal"	=> 0,
+		"kbused"	=> 0,
+		"kbfree"	=> 0,
+		"kbshared"	=> 0,
+		"kbsaved"	=> 0,
+		"savedper"	=> 0
+	);
+
+	if ($cmd == "index") {
+		$return_arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $oids["index"], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
+		for ($i=0;($i<sizeof($return_arr));$i++) {
+			print $return_arr[$i] . "\n";
+		}
+	} elseif ($cmd == "query") {
+		$arg = $arg1;
+		$arr_index = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $oids["index"], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
+		switch ($arg) {
+			case "index":
+				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $oids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
+				break;
+			case "name":
+				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $oids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
+				break;
+			case "usedper":
+				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $oids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
+				break;
+			case "iused":
+				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $oids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
+				break;
+			case "ifree":
+				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $oids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
+				break;
+			case "iusedper":
+				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $oids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
+				break;
+			case "ffree":
+				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $oids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
+				break;
+			case "fused":
+				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $oids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
+				break;
+			case "fposs":
+				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $oids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
+				break;
+			case "savedper":
+				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $oids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
+				break;
+			default:
+				$arr = ss_netapp_add_high_low($cmd, $arg, $hostname, $snmp_community, $oids, $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol,$snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout);
+				break;
+		}
+		for ($i=0;($i<sizeof($arr_index));$i++) {
+			print $arr_index[$i] . "!" . $arr[$i] . "\n";
+		}
+	} elseif ($cmd == "get") {
+		$arg = $arg1;
+		$index = $arg2;
+		switch ($arg) {
+			case "name":
+				return cacti_snmp_get($hostname, $snmp_community, $oids[$arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
+				break;
+			case "usedper":
+				return cacti_snmp_get($hostname, $snmp_community, $oids[$arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
+				break;
+			case "iused":
+				return cacti_snmp_get($hostname, $snmp_community, $oids[$arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
+				break;
+			case "ifree":
+				return cacti_snmp_get($hostname, $snmp_community, $oids[$arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
+				break;
+			case "iusedper":
+				return cacti_snmp_get($hostname, $snmp_community, $oids[$arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
+				break;
+			case "ffree":
+				return cacti_snmp_get($hostname, $snmp_community, $oids[$arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
+				break;
+			case "fused":
+				return cacti_snmp_get($hostname, $snmp_community, $oids[$arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
+				break;
+			case "fposs":
+				return cacti_snmp_get($hostname, $snmp_community, $oids[$arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
+				break;
+			case "savedper":
+				return cacti_snmp_get($hostname, $snmp_community, $oids[$arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
+				break;
+			default:
+				return ss_netapp_add_high_low($cmd, $arg, $hostname, $snmp_community, $oids, $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, $index);
+		}
+	}
+}
+
+# ============================================================================
 # This function is a stub.
 # ============================================================================
 function ss_netapp_cifs($hostname, $snmp_auth) {
