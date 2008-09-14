@@ -2,6 +2,10 @@
 # Copyright 2008-2008 Chris Gianelloni; Distributed under the GPL v2
 # $Header: $
 
+  14 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/netapp/scripts/ss_netapp.php:
+  Fixing the SNMP splitting temporarily.
+
   09 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   cacti/netapp/scripts/ss_netapp.php:
   Adding notes about which licenses are required for a given function for
