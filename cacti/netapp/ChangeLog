@@ -4,6 +4,10 @@
 
   14 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   cacti/netapp/scripts/ss_netapp.php:
+  Adding in SNMP splitting to each function that needs it.
+
+  14 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/netapp/scripts/ss_netapp.php:
   Fixing the SNMP splitting temporarily.
 
   09 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
