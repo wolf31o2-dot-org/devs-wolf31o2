@@ -3,6 +3,10 @@
 # $Header: $
 
   14 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  +nagios/netapp/check_netapp_health.pl:
+  Adding check_netapp_health.pl by William Preston <support@netways.de>.
+
+  14 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   nagios/netapp/check_netapp.pl:
   Converted from DOS to UNIX format.
 
