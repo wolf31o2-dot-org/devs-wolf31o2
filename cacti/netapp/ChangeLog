@@ -4,6 +4,10 @@
 
   14 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   cacti/netapp/scripts/ss_netapp.php:
+  Renaming some of the oids array keys.
+
+  14 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/netapp/scripts/ss_netapp.php:
   Call our volume function along side the lun function when called without a
   function argument.
 

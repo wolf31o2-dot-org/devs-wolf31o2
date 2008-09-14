@@ -65,15 +65,15 @@ if (!isset($called_by_script_server)) {
 	}
 	print($result);
 	# TODO: make this some kind of loop above
-	$result = call_user_func_array("ss_netapp_volumes", $_SERVER["argv"]);
-	if (!$debug) {
-		# Throw away the buffer, which ought to contain only errors.
-		ob_end_clean();
-	} else {
-		# In debugging mode, print out the errors.
-		ob_end_flush();
-	}
-	print($result);
+	$result2 = call_user_func_array("ss_netapp_volumes", $_SERVER["argv"]);
+#	if (!$debug) {
+#		# Throw away the buffer, which ought to contain only errors.
+#		ob_end_clean();
+#	} else {
+#		# In debugging mode, print out the errors.
+#		ob_end_flush();
+#	}
+	print($result2);
 
 }
 
@@ -233,13 +233,13 @@ function ss_netapp_volumes($hostname, $snmp_auth, $cmd, $arg1 = "", $arg2 = "") 
 	$oids = array(
 		"index"			=> $volTable . ".1",
 		"name"			=> $volTable . ".2",
-		"percentUsed"	=> $volTable . ".6",
-		"inodeUsed"		=> $volTable . ".7",
-		"inodeFree"		=> $volTable . ".8",
-		"inodeUsedper"	=> $volTable . ".9",
-		"filesFree"		=> $volTable . ".11",
-		"filesUsed"		=> $volTable . ".12",
-		"filesPoss"		=> $volTable . ".13",
+		"usedper"		=> $volTable . ".6",
+		"iused"			=> $volTable . ".7",
+		"ifree"			=> $volTable . ".8",
+		"iusedper"		=> $volTable . ".9",
+		"ffree"			=> $volTable . ".11",
+		"fused"			=> $volTable . ".12",
+		"fposs"			=> $volTable . ".13",
 		"hkbtotal"		=> $volTable . ".14",
 		"lkbtotal"		=> $volTable . ".15",
 		"hkbused"		=> $volTable . ".16",
@@ -250,7 +250,7 @@ function ss_netapp_volumes($hostname, $snmp_auth, $cmd, $arg1 = "", $arg2 = "") 
 		"lkbshared"		=> $volTable . ".25",
 		"hkbsaved"		=> $volTable . ".26",
 		"lkbsaved"		=> $volTable . ".27",
-		"percentSaved"	=> $volTable . ".28"
+		"savedper"		=> $volTable . ".28"
 	);
 
 	# Define the variables to output for each graph.
