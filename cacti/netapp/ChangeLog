@@ -3,6 +3,11 @@
 # $Header: $
 
   24 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/netapp/scripts/ss_netapp.php:
+  Adding an additional argument before the host when doing queries allows us
+  to select the function to run, or run them all, if nothing is specifiied.
+
+  24 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   cacti/netapp/script_server/netapp-volumes.xml:
   Change df to vol.
 

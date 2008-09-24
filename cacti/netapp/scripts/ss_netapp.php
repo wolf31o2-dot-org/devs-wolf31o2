@@ -59,18 +59,21 @@ if (!isset($called_by_script_server)) {
 		}
 	}
 	array_shift($_SERVER["argv"]);
-	# TODO: fix this so it calls all of our functions which give usable output
-#	$result = call_user_func_array("ss_netapp_luns", $_SERVER["argv"]);
-#	if (!$debug) {
-		# Throw away the buffer, which ought to contain only errors.
-#		ob_end_clean();
-#	} else {
-		# In debugging mode, print out the errors.
-#		ob_end_flush();
-#	}
-#	print($result);
-	# TODO: make this some kind of loop above
-	$result2 = call_user_func_array("ss_netapp_volumes", $_SERVER["argv"]);
+	# At this point, we've removed our own name from the array, but we still do
+	# not know which script we should run, or if we should run them all.  Since
+	# we want to be used as a Data Query, we check the first argument for a
+	# short name for a function and go from there, or show them all, if the
+	# argument is missing.
+	if ($_SERVER["argv"][0] == "lun") {
+		array_shift($_SERVER["argv"]);
+		$result = call_user_func_array("ss_netapp_luns", $_SERVER["argv"]);
+	} elseif ($_SERVER["argv"][0] == "vol") {
+		array_shift($_SERVER["argv"]);
+		$result = call_user_func_array("ss_netapp_volumes", $_SERVER["argv"]);
+	} else {
+		$result = call_user_func_array("ss_netapp_luns", $_SERVER["argv"]);
+		$result = call_user_func_array("ss_netapp_volumes", $_SERVER["argv"]);
+	}
 	if (!$debug) {
 #		# Throw away the buffer, which ought to contain only errors.
 		ob_end_clean();
@@ -78,7 +81,7 @@ if (!isset($called_by_script_server)) {
 #		# In debugging mode, print out the errors.
 		ob_end_flush();
 	}
-	print($result2);
+	print($result);
 }
 
 # ============================================================================
