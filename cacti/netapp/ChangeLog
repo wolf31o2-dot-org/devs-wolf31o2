@@ -4,6 +4,11 @@
 
   24 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   cacti/netapp/script_server/netapp-luns.xml,
+  cacti/netapp/script_server/netapp-volumes.xml:
+  Uncomment the size checking for LUNs.
+
+  24 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/netapp/script_server/netapp-luns.xml,
   cacti/netapp/script_server/netapp-volumes.xml,
   cacti/netapp/scripts/ss_netapp.php:
   Update the debugging in the top section of the script.

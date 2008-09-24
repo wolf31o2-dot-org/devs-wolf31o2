@@ -25,11 +25,11 @@
 			<direction>input</direction>
 			<query_name>name</query_name>
 		</lunName>
-<!--		<lunSize>
+		<lunSize>
 			<name>Total Space</name>
 			<direction>output</direction>
 			<query_name>size</query_name>
-		</lunSize> -->
+		</lunSize>
 		<lunOps>
 			<name>Total Operations</name>
 			<direction>output</direction>
