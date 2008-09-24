@@ -17,7 +17,7 @@ if(!isset($_SERVER["argv"][0]) || isset($_SERVER['REQUEST_METHOD']) || isset($_S
 # ============================================================================
 # Define whether you want debugging behavior.
 # ============================================================================
-$debug = TRUE;
+$debug = FALSE;
 error_reporting($debug ? E_ALL : E_ERROR);
 
 # Make this a happy little script even when there are errors.
@@ -39,7 +39,6 @@ function error_handler($errno, $errstr, $errfile, $errline) {
 # Set up the stuff we need to be called by the script server.
 # ============================================================================
 if (file_exists(dirname(__FILE__) . "/../include/global.php")) {
-	# See issue 5 for the reasoning behind this.
 	include_once(dirname(__FILE__) . "/../include/global.php");
 } else {
 	# Some versions don't have global.php.
@@ -53,28 +52,33 @@ include_once($config["base_path"] . "/lib/snmp.php");
 # Make sure we can also be called as a script.
 # ============================================================================
 if (!isset($called_by_script_server)) {
+	if ($debug) {
+		print "DEBUG: script arguments\n";
+		for ($i=0;($i<sizeof($_SERVER["argv"]));$i++) {
+			print "DEBUG: $i = " . $_SERVER["argv"][$i] . "\n";
+		}
+	}
 	array_shift($_SERVER["argv"]);
 	# TODO: fix this so it calls all of our functions which give usable output
-	$result = call_user_func_array("ss_netapp_luns", $_SERVER["argv"]);
-	if (!$debug) {
-		# Throw away the buffer, which ought to contain only errors.
-		ob_end_clean();
-	} else {
-		# In debugging mode, print out the errors.
-		ob_end_flush();
-	}
-	print($result);
-	# TODO: make this some kind of loop above
-	$result2 = call_user_func_array("ss_netapp_volumes", $_SERVER["argv"]);
+#	$result = call_user_func_array("ss_netapp_luns", $_SERVER["argv"]);
 #	if (!$debug) {
-#		# Throw away the buffer, which ought to contain only errors.
+		# Throw away the buffer, which ought to contain only errors.
 #		ob_end_clean();
 #	} else {
-#		# In debugging mode, print out the errors.
+		# In debugging mode, print out the errors.
 #		ob_end_flush();
 #	}
+#	print($result);
+	# TODO: make this some kind of loop above
+	$result2 = call_user_func_array("ss_netapp_volumes", $_SERVER["argv"]);
+	if (!$debug) {
+#		# Throw away the buffer, which ought to contain only errors.
+		ob_end_clean();
+	} else {
+#		# In debugging mode, print out the errors.
+		ob_end_flush();
+	}
 	print($result2);
-
 }
 
 # ============================================================================

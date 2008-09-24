@@ -2,6 +2,12 @@
 # Copyright 2008-2008 Chris Gianelloni; Distributed under the GPL v2
 # $Header: $
 
+  24 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/netapp/script_server/netapp-luns.xml,
+  cacti/netapp/script_server/netapp-volumes.xml,
+  cacti/netapp/scripts/ss_netapp.php:
+  Update the debugging in the top section of the script.
+
   14 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   cacti/netapp/scripts/ss_netapp.php:
   Change some arrays and variables to be unique.
