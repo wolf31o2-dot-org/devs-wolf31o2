@@ -3,6 +3,10 @@
 # $Header: $
 
   24 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/netapp/templates/cacti_host_template_netapp_filer.xml:
+  Updated the template with updates required for the latest scripts and XML.
+
+  24 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   cacti/netapp/scripts/ss_netapp.php:
   Cleaning the script up a little bit. This is working in production.
 
