@@ -66,7 +66,6 @@ if (!isset($called_by_script_server)) {
 	# argument is missing.
 	if (($_SERVER["argv"][0] == "lun") || ($_SERVER["argv"][0] == "vol")) {
 		$statstype = $_SERVER["argv"][0];
-		array_shift($_SERVER["argv"]);
 		switch ($statstype) {
 			case "lun":
 				$result = call_user_func_array("ss_netapp_luns", $_SERVER["argv"]);
@@ -91,6 +90,7 @@ if (!isset($called_by_script_server)) {
 			ob_end_flush();
 		}
 		print($result);
+		ob_start();
 		$result = call_user_func_array("ss_netapp_volumes", $_SERVER["argv"]);
 		if (!$debug) {
 			ob_end_clean();
@@ -105,7 +105,7 @@ if (!isset($called_by_script_server)) {
 # This function gets the statistics for each LUN on the filer.  This will need
 # either a FCP license or an iSCSI license.
 # ============================================================================
-function ss_netapp_luns($hostname, $snmp_auth, $cmd, $arg1 = "", $arg2 = "") {
+function ss_netapp_luns($statstype = "", $hostname, $snmp_auth, $cmd, $arg1 = "", $arg2 = "") {
 	$snmp						= explode(":", $snmp_auth);
 	$snmp_version				= $snmp[0];
 	$snmp_port					= $snmp[1];
@@ -129,7 +129,6 @@ function ss_netapp_luns($hostname, $snmp_auth, $cmd, $arg1 = "", $arg2 = "") {
 	} else {
 		$snmp_community			= $snmp[3];
 	}
-//	ss_netapp_split_snmp $snmp_auth;
 	$baseOID = ".1.3.6.1.4.1.789";
 
 	$lunCount = $baseOID . ".1.17.15.1.0";
@@ -226,7 +225,7 @@ function ss_netapp_luns($hostname, $snmp_auth, $cmd, $arg1 = "", $arg2 = "") {
 # This function pulls volume statistics.  It uses the high and low counters to
 # be more accurate.  The shared and saved stats require an A-SIS license.
 # ============================================================================
-function ss_netapp_volumes($hostname, $snmp_auth, $cmd, $arg1 = "", $arg2 = "") {
+function ss_netapp_volumes($statstype = "", $hostname, $snmp_auth, $cmd, $arg1 = "", $arg2 = "") {
 	$snmp						= explode(":", $snmp_auth);
 	$snmp_version				= $snmp[0];
 	$snmp_port					= $snmp[1];
@@ -250,7 +249,6 @@ function ss_netapp_volumes($hostname, $snmp_auth, $cmd, $arg1 = "", $arg2 = "") 
 	} else {
 		$snmp_community			= $snmp[3];
 	}
-//	ss_netapp_split_snmp $snmp_auth;
 	$baseOID = ".1.3.6.1.4.1.789";
 
 	$volTable = $baseOID . ".1.5.4.1";
@@ -426,7 +424,6 @@ function ss_netapp_cifs($hostname, $snmp_auth) {
 	} else {
 		$snmp_community			= $snmp[3];
 	}
-//	ss_netapp_split_snmp $snmp_auth;
 	$baseOID = ".1.3.6.1.4.1.789";
 
 	$oids = array();
@@ -464,7 +461,6 @@ function ss_netapp_fcp($hostname, $snmp_auth) {
 	} else {
 		$snmp_community			= $snmp[3];
 	}
-//	ss_netapp_split_snmp $snmp_auth;
 	$baseOID = ".1.3.6.1.4.1.789";
 
 	$oids = array(
@@ -518,7 +514,6 @@ function ss_netapp_http($hostname, $snmp_auth) {
 	} else {
 		$snmp_community			= $snmp[3];
 	}
-//	ss_netapp_split_snmp $snmp_auth;
 	$baseOID = ".1.3.6.1.4.1.789";
 
 	$oids = array();
@@ -555,7 +550,6 @@ function ss_netapp_iscsi($hostname, $snmp_auth) {
 	} else {
 		$snmp_community			= $snmp[3];
 	}
-//	ss_netapp_split_snmp $snmp_auth;
 	$baseOID = ".1.3.6.1.4.1.789";
 
 	$oids = array();
@@ -592,7 +586,6 @@ function ss_netapp_nfs($hostname, $snmp_auth) {
 	} else {
 		$snmp_community			= $snmp[3];
 	}
-//	ss_netapp_split_snmp $snmp_auth;
 	$baseOID = ".1.3.6.1.4.1.789";
 
 	$oids = array();
@@ -631,7 +624,6 @@ function ss_netapp_license($hostname, $snmp_auth, $arg1="") {
 	} else {
 		$snmp_community			= $snmp[3];
 	}
-//	ss_netapp_split_snmp $snmp_auth;
 	$baseOID = ".1.3.6.1.4.1.789";
 
 	$oids = array(
@@ -673,36 +665,6 @@ function ss_netapp_license($hostname, $snmp_auth, $arg1="") {
 		}
 	}
 	return $status;
-}
-
-# ============================================================================
-# This function splits the snmp_auth variable into the various SNMP options.
-# ============================================================================
-function ss_netapp_split_snmp($snmp_auth) {
-	$snmp						= explode(":", $snmp_auth);
-	$snmp_version				= $snmp[0];
-	$snmp_port					= $snmp[1];
-	$snmp_timeout				= $snmp[2];
-
-	$snmp_auth_username			= "";
-	$snmp_auth_password			= "";
-	$snmp_auth_protocol			= "";
-	$snmp_priv_passphrase		= "";
-	$snmp_priv_protocol			= "";
-	$snmp_context				= "";
-	$snmp_community				= "";
-
-	if ($snmp_version == 3) {
-		$snmp_auth_username		= $snmp[4];
-		$snmp_auth_password		= $snmp[5];
-		$snmp_auth_protocol		= $snmp[6];
-		$snmp_priv_passphrase	= $snmp[7];
-		$snmp_priv_protocol		= $snmp[8];
-		$snmp_context			= $snmp[9];
-	} else {
-		$snmp_community			= $snmp[3];
-	}
-	return $snmp;
 }
 
 # ============================================================================
