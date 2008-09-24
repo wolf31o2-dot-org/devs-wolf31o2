@@ -64,24 +64,41 @@ if (!isset($called_by_script_server)) {
 	# we want to be used as a Data Query, we check the first argument for a
 	# short name for a function and go from there, or show them all, if the
 	# argument is missing.
-	if ($_SERVER["argv"][0] == "lun") {
+	if (($_SERVER["argv"][0] == "lun") || ($_SERVER["argv"][0] == "vol")) {
+		$statstype = $_SERVER["argv"][0];
 		array_shift($_SERVER["argv"]);
-		$result = call_user_func_array("ss_netapp_luns", $_SERVER["argv"]);
-	} elseif ($_SERVER["argv"][0] == "vol") {
-		array_shift($_SERVER["argv"]);
-		$result = call_user_func_array("ss_netapp_volumes", $_SERVER["argv"]);
+		switch ($statstype) {
+			case "lun":
+				$result = call_user_func_array("ss_netapp_luns", $_SERVER["argv"]);
+				break;
+			case "vol":
+				$result = call_user_func_array("ss_netapp_volumes", $_SERVER["argv"]);
+				break;
+		}
+		if (!$debug) {
+			# Throw away the buffer, which ought to contain only errors.
+			ob_end_clean();
+		} else {
+			# In debugging mode, print out the errors.
+			ob_end_flush();
+		}
+		print($result);
 	} else {
 		$result = call_user_func_array("ss_netapp_luns", $_SERVER["argv"]);
+		if (!$debug) {
+			ob_end_clean();
+		} else {
+			ob_end_flush();
+		}
+		print($result);
 		$result = call_user_func_array("ss_netapp_volumes", $_SERVER["argv"]);
+		if (!$debug) {
+			ob_end_clean();
+		} else {
+			ob_end_flush();
+		}
+		print($result);
 	}
-	if (!$debug) {
-#		# Throw away the buffer, which ought to contain only errors.
-		ob_end_clean();
-	} else {
-#		# In debugging mode, print out the errors.
-		ob_end_flush();
-	}
-	print($result);
 }
 
 # ============================================================================
