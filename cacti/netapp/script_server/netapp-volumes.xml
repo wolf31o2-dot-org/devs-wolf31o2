@@ -9,86 +9,86 @@
 	<arg_get>get</arg_get>
 	<arg_prepend>|host_hostname| |host_snmp_version|:|host_snmp_port|:|host_snmp_timeout|:|host_snmp_community|:|host_snmp_username|:|host_snmp_password|:|host_snmp_auth_protocol|:|host_snmp_priv_passphrase|:|host_snmp_priv_protocol|:|host_snmp_context|</arg_prepend>
 	<output_delimeter>!</output_delimeter>
-	<index_order>dfMountedOn:dfIndex</index_order>
+	<index_order>volMountedOn:volIndex</index_order>
 	<index_order_type>alphabetic</index_order_type>
 	<index_title_format>|chosen_order_field|</index_title_format>
 
    <fields>
-      <dfIndex>
+      <volIndex>
          <name>Index</name>
          <direction>input</direction>
          <query_name>index</query_name>
-      </dfIndex>
-      <dfMountedOn>
+      </volIndex>
+      <volMountedOn>
          <name>Description</name>
          <direction>input</direction>
          <query_name>name</query_name>
-      </dfMountedOn>
-      <dfKBytesTotal>
+      </volMountedOn>
+      <volKBytesTotal>
          <name>KBytesTotal</name>
          <direction>output</direction>
          <query_name>kbtotal</query_name>
-      </dfKBytesTotal>
-      <dfKBytesUsed>
+      </volKBytesTotal>
+      <volKBytesUsed>
          <name>KBytesUsed</name>
          <direction>output</direction>
          <query_name>kbused</query_name>
-      </dfKBytesUsed>
-      <dfKBytesAvail>
+      </volKBytesUsed>
+      <volKBytesAvail>
          <name>KBytesAvail</name>
          <direction>output</direction>
          <query_name>kbfree</query_name>
-      </dfKBytesAvail>
-	  <dfKBytesShared>
+      </volKBytesAvail>
+	  <volKBytesShared>
 	     <name>KBytesShared</name>
          <direction>output</direction>
          <query_name>kbshared</query_name>
-	  </dfKBytesShared>
-	  <dfKBytesSaved>
+	  </volKBytesShared>
+	  <volKBytesSaved>
 	     <name>KBytesSaved</name>
          <direction>output</direction>
          <query_name>kbsaved</query_name>
-	  </dfKBytesSaved>
-      <dfPerCentKBytesCapacity>
+	  </volKBytesSaved>
+      <volPerCentKBytesCapacity>
          <name>PerCentKBytesCapacity</name>
          <direction>output</direction>
          <query_name>usedper</query_name>
-      </dfPerCentKBytesCapacity>
-      <dfPerCentKBytesSaved>
+      </volPerCentKBytesCapacity>
+      <volPerCentKBytesSaved>
          <name>PerCentKBytesSaved</name>
          <direction>output</direction>
          <query_name>savedper</query_name>
-      </dfPerCentKBytesSaved>
-      <dfInodesUsed>
+      </volPerCentKBytesSaved>
+      <volInodesUsed>
          <name>InodesUsed</name>
          <direction>output</direction>
          <query_name>iused</query_name>
-      </dfInodesUsed>
-      <dfInodesFree>
+      </volInodesUsed>
+      <volInodesFree>
          <name>InodesFree</name>
          <direction>output</direction>
          <query_name>ifree</query_name>
-      </dfInodesFree>
-      <dfPerCentInodeCapacity>
+      </volInodesFree>
+      <volPerCentInodeCapacity>
          <name>PerCentInodeCapacity</name>
          <direction>output</direction>
          <query_name>iusedper</query_name>
-      </dfPerCentInodeCapacity>
-      <dfMaxFilesAvail>
+      </volPerCentInodeCapacity>
+      <volMaxFilesAvail>
          <name>MaxFilesAvail</name>
          <direction>output</direction>
          <query_name>ffree</query_name>
-      </dfMaxFilesAvail>
-      <dfMaxFilesUsed>
+      </volMaxFilesAvail>
+      <volMaxFilesUsed>
          <name>MaxFilesUsed</name>
          <direction>output</direction>
          <query_name>fused</query_name>
-      </dfMaxFilesUsed>
-      <dfMaxFilesPossible>
+      </volMaxFilesUsed>
+      <volMaxFilesPossible>
          <name>MaxFilesPossible</name>
          <direction>output</direction>
          <query_name>fposs</query_name>
-      </dfMaxFilesPossible>
+      </volMaxFilesPossible>
 
    </fields>
 </interface>

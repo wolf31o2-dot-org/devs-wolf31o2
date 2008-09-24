@@ -3,6 +3,10 @@
 # $Header: $
 
   24 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/netapp/script_server/netapp-volumes.xml:
+  Change df to vol.
+
+  24 Sep 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   cacti/netapp/script_server/netapp-luns.xml,
   cacti/netapp/script_server/netapp-volumes.xml:
   Uncomment the size checking for LUNs.
