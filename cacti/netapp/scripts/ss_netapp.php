@@ -684,8 +684,15 @@ function ss_netapp_add_high_low($type, $arg, $hostname, $snmp_community, $oids, 
 		return $return_arr;
 	} else {
 		$index = $arg1;
-		$high_get = cacti_snmp_get($hostname, $snmp_community, $oids["h" . $arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
-		$low_get = cacti_snmp_get($hostname, $snmp_community, $oids["l" . $arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
+		if ($index == "") {
+			$highoid = $oids["h" . $arg];
+			$lowoid = $oids["l" . $arg];
+		} else {
+			$highoid = $oids["h" . $arg] . ".$index";
+			$lowoid = $oids["l" . $arg] . ".$index";
+		}
+		$high_get = cacti_snmp_get($hostname, $snmp_community, $highoid, $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
+		$low_get = cacti_snmp_get($hostname, $snmp_community, $lowoid, $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
 		return (($high_get << 32) | $low_get);
 	}
 }
