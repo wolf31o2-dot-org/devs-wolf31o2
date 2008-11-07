@@ -4,6 +4,10 @@
 
   07 Nov 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   cacti/netapp/scripts/ss_netapp.php:
+  Only do the SNMP get on licenses where we detect support on the filer.
+
+  07 Nov 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/netapp/scripts/ss_netapp.php:
   Prepend fcp to variables in the ss_netapp_fcp function.
 
   07 Nov 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
