@@ -4,6 +4,10 @@
 
   07 Nov 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   cacti/netapp/scripts/ss_netapp.php:
+  Prepend fcp to variables in the ss_netapp_fcp function.
+
+  07 Nov 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/netapp/scripts/ss_netapp.php:
   Change the OID calls in the ss_netapp_add_high_low function to work with
   both indexed and non-indexed OID trees. This allows us to use this
   function for adding FCP, iSCSI, NFS, and others.
