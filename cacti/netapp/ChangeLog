@@ -4,6 +4,10 @@
 
   14 Nov 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   cacti/netapp/scripts/ss_netapp.php:
+  This is supposed to be foreach instead of a for loop.
+
+  14 Nov 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/netapp/scripts/ss_netapp.php:
   Adding 64-bit counters to the volume stats. The usage of the 64-bit
   counters is keyed on the SNMP version. If the SNMP version of the filer is
   > 1, we use the 64-bit counters. Otherwise, we use the 32-bit high and low
