@@ -463,7 +463,7 @@ function ss_netapp_fcp($hostname, $snmp_auth) {
 	}
 	$baseOID = ".1.3.6.1.4.1.789";
 
-	$oids = array(
+	$fcpoids = array(
 		"lrbytes"	=> $baseOID . ".1.17.3.0",
 		"hrbytes"	=> $baseOID . ".1.17.4.0",
 		"lwbytes"	=> $baseOID . ".1.17.5.0",
@@ -472,19 +472,22 @@ function ss_netapp_fcp($hostname, $snmp_auth) {
 		"lops"		=> $baseOID . ".1.17.14.0",
 	);
 
-	$keys = array(
+	$fcpkeys = array(
 		"rbytes",
 		"wbytes",
 		"ops"
 	);
 
-	$status = array(
+	$fcpstatus = array(
 		"rbytes"	=> 0,
 		"wbytes"	=> 0,
 		"ops"		=> 0
 	);
 
-	return $status;
+	for ($keys as $key) {
+		$fcpstatus[$key] = ss_netapp_add_high_low($cmd, $arg, $hostname, $snmp_community, $fcpoids, $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, $index);
+	}
+	return $fcpstatus;
 }
 
 # ============================================================================

@@ -4,6 +4,10 @@
 
   14 Nov 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   cacti/netapp/scripts/ss_netapp.php:
+  It helps if I add the script.
+
+  14 Nov 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/netapp/scripts/ss_netapp.php:
   Add fcp to local variable names.
 
   07 Nov 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
