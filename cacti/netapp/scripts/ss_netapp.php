@@ -74,29 +74,30 @@ if (!isset($called_by_script_server)) {
 				$result = call_user_func_array("ss_netapp_volumes", $_SERVER["argv"]);
 				break;
 		}
-		if (!$debug) {
+# This doesn't work and I don't feel like debugging it at the moment.
+//		if (!$debug) {
 			# Throw away the buffer, which ought to contain only errors.
-			ob_end_clean();
-		} else {
+//			ob_end_clean();
+//		} else {
 			# In debugging mode, print out the errors.
-			ob_end_flush();
-		}
+//			ob_end_flush();
+//		}
 		print($result);
 	} else {
 		$result = call_user_func_array("ss_netapp_luns", $_SERVER["argv"]);
-		if (!$debug) {
-			ob_end_clean();
-		} else {
-			ob_end_flush();
-		}
+//		if (!$debug) {
+//			ob_end_clean();
+//		} else {
+//			ob_end_flush();
+//		}
 		print($result);
 		ob_start();
 		$result = call_user_func_array("ss_netapp_volumes", $_SERVER["argv"]);
-		if (!$debug) {
-			ob_end_clean();
-		} else {
-			ob_end_flush();
-		}
+//		if (!$debug) {
+//			ob_end_clean();
+//		} else {
+//			ob_end_flush();
+//		}
 		print($result);
 	}
 }
@@ -456,7 +457,7 @@ function ss_netapp_fcp($hostname, $snmp_auth) {
 		"ops"		=> 0
 	);
 
-	for ($keys as $key) {
+	foreach ($keys as $key) {
 		$fcpstatus[$key] = ss_netapp_add_high_low($cmd, $arg, $hostname, $snmp_community, $fcpoids, $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, $index);
 	}
 	return $fcpstatus;

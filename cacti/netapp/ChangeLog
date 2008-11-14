@@ -4,6 +4,11 @@
 
   14 Nov 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   cacti/netapp/scripts/ss_netapp.php:
+  Commenting out the debug output code for the time being until I can find
+  time to troubleshoot it.
+
+  14 Nov 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/netapp/scripts/ss_netapp.php:
   This is supposed to be foreach instead of a for loop.
 
   14 Nov 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
