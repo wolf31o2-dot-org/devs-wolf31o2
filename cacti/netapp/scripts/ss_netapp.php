@@ -268,11 +268,17 @@ function ss_netapp_volumes($statstype = "", $hostname, $snmp_auth, $cmd, $arg1 =
 		"lkbused"		=> $volTable . ".17",
 		"hkbfree"		=> $volTable . ".18",
 		"lkbfree"		=> $volTable . ".19",
+		"type"			=> $volTable . ".23",
 		"hkbshared"		=> $volTable . ".24",
 		"lkbshared"		=> $volTable . ".25",
 		"hkbsaved"		=> $volTable . ".26",
 		"lkbsaved"		=> $volTable . ".27",
-		"savedper"		=> $volTable . ".28"
+		"savedper"		=> $volTable . ".28",
+		"kbtotal64"		=> $volTable . ".29",
+		"kbused64"		=> $volTable . ".30",
+		"kbfree64"		=> $volTable . ".31",
+		"kbshared64"	=> $volTable . ".32",
+		"kbsaved64"		=> $volTable . ".33"
 	);
 
 	# Define the variables to output for each graph.
@@ -286,11 +292,11 @@ function ss_netapp_volumes($statstype = "", $hostname, $snmp_auth, $cmd, $arg1 =
 		"ffree",
 		"fused",
 		"fposs",
-		"kbtotal", # hkbtotal + lkbtotal
-		"kbused", # hkbused + lkbused
-		"kbfree", # hkbfree + lkbfree
-		"kbshared", # hkbshared + lkbshared
-		"kbsaved", # hkbsaved + lkbsaved
+		"kbtotal", # hkbtotal + lkbtotal -or- kbtotal64
+		"kbused", # hkbused + lkbused -or- kbused64
+		"kbfree", # hkbfree + lkbfree -or- kbfree64
+		"kbshared", # hkbshared + lkbshared -or- kbshared64
+		"kbsaved", # hkbsaved + lkbsaved -or- kbsaved64
 		"savedper"
 	);
 
@@ -323,38 +329,19 @@ function ss_netapp_volumes($statstype = "", $hostname, $snmp_auth, $cmd, $arg1 =
 		$arg = $arg1;
 		$arr_index = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $voloids["index"], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
 		switch ($arg) {
-			case "index":
-				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $voloids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
-				break;
-			case "name":
-				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $voloids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
-				break;
-			case "usedper":
-				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $voloids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
-				break;
-			case "iused":
-				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $voloids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
-				break;
-			case "ifree":
-				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $voloids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
-				break;
-			case "iusedper":
-				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $voloids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
-				break;
-			case "ffree":
-				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $voloids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
-				break;
-			case "fused":
-				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $voloids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
-				break;
-			case "fposs":
-				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $voloids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
-				break;
-			case "savedper":
-				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $voloids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
+			case "kbtotal":
+			case "kbused":
+			case "kbfree":
+			case "kbshared":
+			case "kbsaved":
+				if ($snmp_version > 1) {
+					$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $voloids[$arg . "64"], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
+				} else {
+					$arr = ss_netapp_add_high_low($cmd, $arg, $hostname, $snmp_community, $voloids, $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol,$snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout);
+				}
 				break;
 			default:
-				$arr = ss_netapp_add_high_low($cmd, $arg, $hostname, $snmp_community, $voloids, $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol,$snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout);
+				$arr = ss_netapp_reindex(cacti_snmp_walk($hostname, $snmp_community, $voloids[$arg], $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER));
 				break;
 		}
 		for ($i=0;($i<sizeof($arr_index));$i++) {
@@ -364,35 +351,20 @@ function ss_netapp_volumes($statstype = "", $hostname, $snmp_auth, $cmd, $arg1 =
 		$arg = $arg1;
 		$index = $arg2;
 		switch ($arg) {
-			case "name":
-				return cacti_snmp_get($hostname, $snmp_community, $voloids[$arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
-				break;
-			case "usedper":
-				return cacti_snmp_get($hostname, $snmp_community, $voloids[$arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
-				break;
-			case "iused":
-				return cacti_snmp_get($hostname, $snmp_community, $voloids[$arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
-				break;
-			case "ifree":
-				return cacti_snmp_get($hostname, $snmp_community, $voloids[$arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
-				break;
-			case "iusedper":
-				return cacti_snmp_get($hostname, $snmp_community, $voloids[$arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
-				break;
-			case "ffree":
-				return cacti_snmp_get($hostname, $snmp_community, $voloids[$arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
-				break;
-			case "fused":
-				return cacti_snmp_get($hostname, $snmp_community, $voloids[$arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
-				break;
-			case "fposs":
-				return cacti_snmp_get($hostname, $snmp_community, $voloids[$arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
-				break;
-			case "savedper":
-				return cacti_snmp_get($hostname, $snmp_community, $voloids[$arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
+			case "kbtotal":
+			case "kbused":
+			case "kbfree":
+			case "kbshared":
+			case "kbsaved":
+				if ($snmp_version > 1) {
+					return cacti_snmp_get($hostname, $snmp_community, $voloids[$arg . "64"] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
+				} else {
+					return ss_netapp_add_high_low($cmd, $arg, $hostname, $snmp_community, $voloids, $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, $index);
+				}
 				break;
 			default:
-				return ss_netapp_add_high_low($cmd, $arg, $hostname, $snmp_community, $voloids, $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, $index);
+				return cacti_snmp_get($hostname, $snmp_community, $voloids[$arg] . ".$index", $snmp_version, $snmp_auth_username, $snmp_auth_password, $snmp_auth_protocol, $snmp_priv_passphrase, $snmp_priv_protocol, $snmp_context, $snmp_port, $snmp_timeout, read_config_option("snmp_retries"), SNMP_POLLER);
+				break;
 		}
 	}
 }

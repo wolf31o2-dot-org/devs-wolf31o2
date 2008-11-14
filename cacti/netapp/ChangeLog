@@ -3,6 +3,15 @@
 # $Header: $
 
   14 Nov 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  cacti/netapp/scripts/ss_netapp.php:
+  Adding 64-bit counters to the volume stats. The usage of the 64-bit
+  counters is keyed on the SNMP version. If the SNMP version of the filer is
+  > 1, we use the 64-bit counters. Otherwise, we use the 32-bit high and low
+  and derive our 64-bit value from them. This does not do any checking on
+  the ONTAP version (yet), but SNMPv2 and SNMPv3 don't work on ONTAP prior
+  to 7.3, anyway.
+
+  14 Nov 2008; Chris Gianelloni <wolf31o2@wolf31o2.org>
   +cacti/netapp/scripts/get_netapp_disk_rbytes.pl,
   +cacti/netapp/scripts/get_netapp_disk_wbytes.pl:
   Adding a script to get the disk read/write bytes.
