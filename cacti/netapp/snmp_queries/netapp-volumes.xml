@@ -1,0 +1,118 @@
+<interface>
+	<name>Get NetApp Volumes</name>
+	<description>Queries a Filer for a list of monitorable volumes</description>
+	<oid_index>.1.3.6.1.4.1.789.1.5.4.1.1</oid_index>
+	<oid_num_indexes>.1.3.6.1.4.1.789.1.5.6.0</oid_num_indexes>
+	<index_order>volName:volIndex</index_order>
+	<index_order_type>numeric</index_order_type>
+	<index_title_format>|chosen_order_field|</index_title_format>
+
+	<fields>
+		<volIndex>
+			<name>Index</name>
+			<direction>input</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.5.4.1.1</oid>
+		</volIndex>
+		<volName>
+			<name>Description</name>
+			<direction>input</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.5.4.1.2</oid>
+		</volName>
+		<volPercentKBytesCapacity>
+			<name>Percent KBytes Capacity</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.5.4.1.6</oid>
+		</volPercentKBytesCapacity>
+		<volInodesUsed>
+			<name>Inodes Used</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.5.4.1.7</oid>
+		</volInodesUsed>
+		<volInodesFree>
+			<name>Inodes Free</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.5.4.1.8</oid>
+		</volInodesFree>
+		<volPercentInodeCapacity>
+			<name>Percent Inode Capacity</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.5.4.1.9</oid>
+		</volPercentInodeCapacity>
+		<volMaxFilesFree>
+			<name>Max Files Free</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.5.4.1.11</oid>
+		</volMaxFilesFree>
+		<volMaxFilesUsed>
+			<name>Max Files Used</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.5.4.1.12</oid>
+		</volMaxFilesUsed>
+		<volMaxFilesPossible>
+			<name>Max Files Possible</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.5.4.1.13</oid>
+		</volMaxFilesPossible>
+		<volPercentKBytesSaved>
+			<name>Percent KBytes Saved</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.5.4.1.28</oid>
+		</volPercentKBytesSaved>
+		<volKBytesTotal>
+			<name>KBytes Total</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.5.4.1.29</oid>
+		</volKBytesTotal>
+		<volKBytesUsed>
+			<name>KBytes Used</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.5.4.1.30</oid>
+		</volKBytesUsed>
+		<volKBytesAvail>
+			<name>KBytes Free</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.5.4.1.31</oid>
+		</volKBytesAvail>
+		<volKBytesShared>
+			<name>KBytes Shared</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.5.4.1.32</oid>
+		</volKBytesShared>
+		<volKBytesSaved>
+			<name>KBytes Saved</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.5.4.1.33</oid>
+		</volKBytesSaved>
+
+	</fields>
+</interface>
