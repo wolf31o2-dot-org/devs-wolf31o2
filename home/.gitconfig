@@ -1,0 +1,11 @@
+[core]
+	excludesfile = /home/wolf31o2/.gitignore
+[user]
+	name = Chris Gianelloni
+	email = wolf31o2@wolf31o2.org
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[pack]
+	threads = 0
