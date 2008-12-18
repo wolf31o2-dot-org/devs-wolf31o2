@@ -17,8 +17,10 @@ fi
 # User information for echangelog
 export ECHANGELOG_USER="Chris Gianelloni <wolf31o2@wolf31o2.org>"
 
+# These are used for signing/verifying Manifests
 export PORTAGE_GPG_DIR="~/.gnupg/"
 export PORTAGE_GPG_KEY="84B7E981"
+
 export GPG_HOME="~/.gnupg/"
 
 export LC_ALL="en_US.UTF-8"
@@ -27,7 +29,7 @@ export PATH="${HOME}/bin:${PATH}"
 
 # aliases
 alias ll="ls -l"
-alias cdrecord="/usr/bin/cdrecord -v -tao dev=/dev/sr0 driveropts=burnfree"
-alias dvdrecord="/usr/bin/cdrecord -v -sao dev=/dev/sr0 driveropts=burnfree"
+alias cdrecord="/usr/bin/wodim -v -tao dev=/dev/sr0 driveropts=burnfree"
+alias dvdrecord="/usr/bin/wodim -v -sao dev=/dev/sr0 driveropts=burnfree"
 
 # EOF
