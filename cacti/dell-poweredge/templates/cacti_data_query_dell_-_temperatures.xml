@@ -1,0 +1,25 @@
+<cacti>	
+	<hash_04001606ac0110d7b1ed70c0327fe214e793d8>
+		<name>Dell - Temperatures</name>
+		<description>Queries a Dell host for a temperature probe listing</description>
+		<xml_path>&lt;path_cacti&gt;/resource/snmp_queries/dell-temps.xml</xml_path>
+		<data_input_id>hash_030016bf566c869ac6443b0c75d1c32b5a350e</data_input_id>
+		<graphs>
+			<hash_110016efd35235e551ba19a5d857801e666c9b>
+				<name>Dell Poweredge - Thermal Sensor</name>
+				<graph_template_id>hash_000016e385585f9a16023b12e4a5e3fd59887d</graph_template_id>
+				<rrd>
+					<item_000>
+						<snmp_field_name>temperatureProbeReading</snmp_field_name>
+						<data_template_id>hash_010016c7e30b0efaaaceb39ea540b730c10441</data_template_id>
+						<data_template_rrd_id>hash_0800160b124251273a64653396c51fa818cfae</data_template_rrd_id>
+					</item_000>
+				</rrd>
+				<sv_graph>
+				</sv_graph>
+				<sv_data_source>
+				</sv_data_source>
+			</hash_110016efd35235e551ba19a5d857801e666c9b>
+		</graphs>
+	</hash_04001606ac0110d7b1ed70c0327fe214e793d8>
+</cacti>

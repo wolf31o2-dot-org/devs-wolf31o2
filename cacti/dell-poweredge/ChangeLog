@@ -1,0 +1,11 @@
+# ChangeLog for Dell Poweredge Cacti scripts
+# Copyright 2009 Chris Gianelloni; Distributed under the GPL v2
+# $Id$
+
+  27 Mar 2009; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  +cacti_data_query_dell_-_temperatures.xml,
+  +cacti_data_template_dell_poweredge_-_temperature_sensor.xml,
+  +cacti_graph_template_dell_poweredge_-_thermal_sensor.xml,
+  +dell-temps.xml:
+  Initial import of my Dell Poweredge temperature data query and graph template.
+
