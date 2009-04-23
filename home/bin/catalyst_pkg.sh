@@ -1,7 +1,6 @@
 #!/bin/sh
 
-CLSTSRC="/var/gitroot/wolf31o2.org/projs/catalyst"
-#CLSTSRC="/home/wolf31o2/svn/catalyst/trunk"
+CLSTSRC="/data/repos/git/wolf31o2.org/projs/catalyst"
 CLST_V="`grep '__version__=' ${CLSTSRC}/catalyst | cut -d= -f2`"
 CLST_V="${CLST_V//\"/}"
 CLST_V="${CLST_V//\'/}"

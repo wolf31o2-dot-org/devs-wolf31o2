@@ -1,6 +1,6 @@
 #!/bin/sh
 
-GENSRC="/var/gitroot/wolf31o2.org/projs/genkernel"
+GENSRC="/data/repos/git/wolf31o2.org/projs/genkernel"
 GK_V="`grep 'GK_V=' ${GENSRC}/genkernel | cut -d= -f2`"
 GK_V="${GK_V//\"/}"
 GK_V="${GK_V//\'/}"
