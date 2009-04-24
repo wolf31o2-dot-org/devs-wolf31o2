@@ -1,0 +1,123 @@
+<cacti>	
+	<hash_040018de4f1dfefed626c72b3c61873320e0ea>
+		<name>NetApp - Volume Stats</name>
+		<description>Get NetApp Volume stats</description>
+		<xml_path>&lt;path_cacti&gt;/resource/snmp_queries/netapp-volumes.xml</xml_path>
+		<data_input_id>hash_030018bf566c869ac6443b0c75d1c32b5a350e</data_input_id>
+		<graphs>
+			<hash_1100185a2fbba21b0ebfa9dc96cca4d6304e61>
+				<name>NetApp - Volumes - Inodes</name>
+				<graph_template_id>hash_0000187e4f9cadb65cbc96fc52d5deff672703</graph_template_id>
+				<rrd>
+					<item_000>
+						<snmp_field_name>volInodesFree</snmp_field_name>
+						<data_template_id>hash_010018a6ac860068a65ef2eb0cde154d63de3d</data_template_id>
+						<data_template_rrd_id>hash_080018805a7907836c8632d1ef27b2e4bfdbb0</data_template_rrd_id>
+					</item_000>
+					<item_001>
+						<snmp_field_name>volInodesUsed</snmp_field_name>
+						<data_template_id>hash_010018a6ac860068a65ef2eb0cde154d63de3d</data_template_id>
+						<data_template_rrd_id>hash_0800187136bc85c0b8928a5c44d30a4cdd2123</data_template_rrd_id>
+					</item_001>
+				</rrd>
+				<sv_graph>
+					<hash_1200187c3e517e60f9d4dd5ad26432b68353d1>
+						<field_name>title</field_name>
+						<sequence>1</sequence>
+						<text>|host_description| - Inodes - |query_volName|</text>
+					</hash_1200187c3e517e60f9d4dd5ad26432b68353d1>
+				</sv_graph>
+				<sv_data_source>
+					<hash_13001847327cc1ddaabf922a57c69676950769>
+						<field_name>name</field_name>
+						<data_template_id>hash_010018a6ac860068a65ef2eb0cde154d63de3d</data_template_id>
+						<sequence>1</sequence>
+						<text>|host_description| - Inodes (TEST) - |query_volName|</text>
+					</hash_13001847327cc1ddaabf922a57c69676950769>
+				</sv_data_source>
+			</hash_1100185a2fbba21b0ebfa9dc96cca4d6304e61>
+			<hash_110018d1dc9b94dff2e032a06e2e28a226038c>
+				<name>NetApp - Volumes - Usage</name>
+				<graph_template_id>hash_000018b0bafbc2289398207c6b13f286b9d80a</graph_template_id>
+				<rrd>
+					<item_000>
+						<snmp_field_name>volKBytesAvail</snmp_field_name>
+						<data_template_id>hash_010018a6ac860068a65ef2eb0cde154d63de3d</data_template_id>
+						<data_template_rrd_id>hash_080018d92c84a1d8ddac1df3c0bc8529c6b40c</data_template_rrd_id>
+					</item_000>
+					<item_001>
+						<snmp_field_name>volKBytesUsed</snmp_field_name>
+						<data_template_id>hash_010018a6ac860068a65ef2eb0cde154d63de3d</data_template_id>
+						<data_template_rrd_id>hash_0800181965d3eda16d9d0066a8109998d1c416</data_template_rrd_id>
+					</item_001>
+					<item_002>
+						<snmp_field_name>volKBytesTotal</snmp_field_name>
+						<data_template_id>hash_010018a6ac860068a65ef2eb0cde154d63de3d</data_template_id>
+						<data_template_rrd_id>hash_080018420d0349a73d03f5c069eb1172d25fa3</data_template_rrd_id>
+					</item_002>
+					<item_003>
+						<snmp_field_name>volKBytesShared</snmp_field_name>
+						<data_template_id>hash_010018a6ac860068a65ef2eb0cde154d63de3d</data_template_id>
+						<data_template_rrd_id>hash_080018de9d46c391d6352195a12a962d321108</data_template_rrd_id>
+					</item_003>
+					<item_004>
+						<snmp_field_name>volKBytesSaved</snmp_field_name>
+						<data_template_id>hash_010018a6ac860068a65ef2eb0cde154d63de3d</data_template_id>
+						<data_template_rrd_id>hash_0800182e4b5d9e1e01b4bad935cd1de8f023dd</data_template_rrd_id>
+					</item_004>
+				</rrd>
+				<sv_graph>
+					<hash_120018bfff4ec06714d4f30bab596c561f2fe7>
+						<field_name>title</field_name>
+						<sequence>2</sequence>
+						<text>|host_description| - Disk Usage - |query_volName|</text>
+					</hash_120018bfff4ec06714d4f30bab596c561f2fe7>
+				</sv_graph>
+				<sv_data_source>
+					<hash_130018c2c81d1408039895b46ed2eea029ac88>
+						<field_name>name</field_name>
+						<data_template_id>hash_010018a6ac860068a65ef2eb0cde154d63de3d</data_template_id>
+						<sequence>2</sequence>
+						<text>|host_description| - Disk Usage (TEST) - |query_volName|</text>
+					</hash_130018c2c81d1408039895b46ed2eea029ac88>
+				</sv_data_source>
+			</hash_110018d1dc9b94dff2e032a06e2e28a226038c>
+			<hash_1100183a591e3be47ac691d54f48e67625a435>
+				<name>NetApp - Volumes - Files</name>
+				<graph_template_id>hash_0000181257a021ce7bd804d629d1e60fdecec0</graph_template_id>
+				<rrd>
+					<item_000>
+						<snmp_field_name>volMaxFilesFree</snmp_field_name>
+						<data_template_id>hash_010018a6ac860068a65ef2eb0cde154d63de3d</data_template_id>
+						<data_template_rrd_id>hash_0800186840f3775c82d048a0271543c140ca58</data_template_rrd_id>
+					</item_000>
+					<item_001>
+						<snmp_field_name>volMaxFilesPossible</snmp_field_name>
+						<data_template_id>hash_010018a6ac860068a65ef2eb0cde154d63de3d</data_template_id>
+						<data_template_rrd_id>hash_0800186eec9fd68660d293720c8d97198e2cfc</data_template_rrd_id>
+					</item_001>
+					<item_002>
+						<snmp_field_name>volMaxFilesUsed</snmp_field_name>
+						<data_template_id>hash_010018a6ac860068a65ef2eb0cde154d63de3d</data_template_id>
+						<data_template_rrd_id>hash_080018cc9a7892f9908173380bd49ae3afb176</data_template_rrd_id>
+					</item_002>
+				</rrd>
+				<sv_graph>
+					<hash_12001880912eaa9ece66ce974748764486cdc1>
+						<field_name>title</field_name>
+						<sequence>1</sequence>
+						<text>|host_description| - Files - |query_volName|</text>
+					</hash_12001880912eaa9ece66ce974748764486cdc1>
+				</sv_graph>
+				<sv_data_source>
+					<hash_1300184d53c10f4c17c211f33ece29673a1d67>
+						<field_name>name</field_name>
+						<data_template_id>hash_010018a6ac860068a65ef2eb0cde154d63de3d</data_template_id>
+						<sequence>1</sequence>
+						<text>|host_description| - Files (TEST) - |query_volName|</text>
+					</hash_1300184d53c10f4c17c211f33ece29673a1d67>
+				</sv_data_source>
+			</hash_1100183a591e3be47ac691d54f48e67625a435>
+		</graphs>
+	</hash_040018de4f1dfefed626c72b3c61873320e0ea>
+</cacti>

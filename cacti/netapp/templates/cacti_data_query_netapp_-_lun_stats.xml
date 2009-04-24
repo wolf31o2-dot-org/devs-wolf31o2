@@ -1,0 +1,113 @@
+<cacti>	
+	<hash_040018a582e7242c96344373ef31cab4760759>
+		<name>NetApp - LUN Stats</name>
+		<description>Queries a NetApp for a list of monitorable LUNs</description>
+		<xml_path>&lt;path_cacti&gt;/resource/snmp_queries/netapp-luns.xml</xml_path>
+		<data_input_id>hash_030018bf566c869ac6443b0c75d1c32b5a350e</data_input_id>
+		<graphs>
+			<hash_110018e4aaa070efdfcc43f0897f9d0b655cec>
+				<name>NetApp - LUN Size</name>
+				<graph_template_id>hash_00001802cdee87faba591630bb043db19a0930</graph_template_id>
+				<rrd>
+					<item_000>
+						<snmp_field_name>lunSize</snmp_field_name>
+						<data_template_id>hash_010018e6bba62a003bb95a795ae5c994b2648a</data_template_id>
+						<data_template_rrd_id>hash_0800189c562af727fd6f9b1e02f799a074b486</data_template_rrd_id>
+					</item_000>
+				</rrd>
+				<sv_graph>
+					<hash_120018f7183896b4d85ee161e5c21f71fd381d>
+						<field_name>title</field_name>
+						<sequence>1</sequence>
+						<text>|host_description| - LUN Size - |query_lunDescr|</text>
+					</hash_120018f7183896b4d85ee161e5c21f71fd381d>
+				</sv_graph>
+				<sv_data_source>
+					<hash_130018739fc3be3ef31c6d259292720c7399ac>
+						<field_name>name</field_name>
+						<data_template_id>hash_010018e6bba62a003bb95a795ae5c994b2648a</data_template_id>
+						<sequence>1</sequence>
+						<text>|host_description| - LUN Size - |query_lunName|</text>
+					</hash_130018739fc3be3ef31c6d259292720c7399ac>
+				</sv_data_source>
+			</hash_110018e4aaa070efdfcc43f0897f9d0b655cec>
+			<hash_110018380c6497d38a222fbcf003fddce76a4b>
+				<name>NetApp - LUN Traffic</name>
+				<graph_template_id>hash_0000187dc51dc1fb00637f79c8d7ee72b06edf</graph_template_id>
+				<rrd>
+					<item_000>
+						<snmp_field_name>lunWriteBytes</snmp_field_name>
+						<data_template_id>hash_010018e6bba62a003bb95a795ae5c994b2648a</data_template_id>
+						<data_template_rrd_id>hash_080018c805b02153ff70da1406afd830aeeade</data_template_rrd_id>
+					</item_000>
+					<item_001>
+						<snmp_field_name>lunReadBytes</snmp_field_name>
+						<data_template_id>hash_010018e6bba62a003bb95a795ae5c994b2648a</data_template_id>
+						<data_template_rrd_id>hash_08001895325c1d3b0b9d340d7e469d6caa28c0</data_template_rrd_id>
+					</item_001>
+				</rrd>
+				<sv_graph>
+					<hash_1200184a0fcc09a5511e1f9032dfbc7ff68511>
+						<field_name>title</field_name>
+						<sequence>1</sequence>
+						<text>|host_description| - LUN Traffic - |query_lunDescr|</text>
+					</hash_1200184a0fcc09a5511e1f9032dfbc7ff68511>
+				</sv_graph>
+				<sv_data_source>
+					<hash_130018e108e518589ed993d7977d8949b5e50c>
+						<field_name>name</field_name>
+						<data_template_id>hash_010018e6bba62a003bb95a795ae5c994b2648a</data_template_id>
+						<sequence>1</sequence>
+						<text>|host_description| - LUN Traffic (TEST) - |query_lunName|</text>
+					</hash_130018e108e518589ed993d7977d8949b5e50c>
+				</sv_data_source>
+			</hash_110018380c6497d38a222fbcf003fddce76a4b>
+			<hash_110018e899c7729243e4931b6f2e139c6dd025>
+				<name>NetApp - LUN Ops</name>
+				<graph_template_id>hash_000018f6f8002d7bf1f579d49b9e5c0346f8a8</graph_template_id>
+				<rrd>
+					<item_000>
+						<snmp_field_name>lunErrors</snmp_field_name>
+						<data_template_id>hash_010018e6bba62a003bb95a795ae5c994b2648a</data_template_id>
+						<data_template_rrd_id>hash_0800182ba9deed79e756fde8c0b01df2dbdb7f</data_template_rrd_id>
+					</item_000>
+					<item_001>
+						<snmp_field_name>lunOtherOps</snmp_field_name>
+						<data_template_id>hash_010018e6bba62a003bb95a795ae5c994b2648a</data_template_id>
+						<data_template_rrd_id>hash_080018ba379f4a630e2faf8197622fce57dcc3</data_template_rrd_id>
+					</item_001>
+					<item_002>
+						<snmp_field_name>lunOps</snmp_field_name>
+						<data_template_id>hash_010018e6bba62a003bb95a795ae5c994b2648a</data_template_id>
+						<data_template_rrd_id>hash_0800187ddaecd1d38667e9187dc917d035a052</data_template_rrd_id>
+					</item_002>
+					<item_003>
+						<snmp_field_name>lunReadOps</snmp_field_name>
+						<data_template_id>hash_010018e6bba62a003bb95a795ae5c994b2648a</data_template_id>
+						<data_template_rrd_id>hash_080018d65c5cb5ee9310666efe75617d67eb63</data_template_rrd_id>
+					</item_003>
+					<item_004>
+						<snmp_field_name>lunWriteOps</snmp_field_name>
+						<data_template_id>hash_010018e6bba62a003bb95a795ae5c994b2648a</data_template_id>
+						<data_template_rrd_id>hash_080018ca8db98f3fa0fe0634f2543393cd8fa8</data_template_rrd_id>
+					</item_004>
+				</rrd>
+				<sv_graph>
+					<hash_120018d1309a5337b79afb9d3ff36a04dc6b44>
+						<field_name>title</field_name>
+						<sequence>1</sequence>
+						<text>|host_description| - LUN Ops - |query_lunDescr|</text>
+					</hash_120018d1309a5337b79afb9d3ff36a04dc6b44>
+				</sv_graph>
+				<sv_data_source>
+					<hash_130018bed5cfd06bee7774645a5a126693ddad>
+						<field_name>name</field_name>
+						<data_template_id>hash_010018e6bba62a003bb95a795ae5c994b2648a</data_template_id>
+						<sequence>1</sequence>
+						<text>|host_description| - LUN Ops (TEST) - |query_lunName|</text>
+					</hash_130018bed5cfd06bee7774645a5a126693ddad>
+				</sv_data_source>
+			</hash_110018e899c7729243e4931b6f2e139c6dd025>
+		</graphs>
+	</hash_040018a582e7242c96344373ef31cab4760759>
+</cacti>
