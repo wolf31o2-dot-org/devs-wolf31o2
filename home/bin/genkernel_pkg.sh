@@ -19,4 +19,7 @@ rm -f pkg/*.bz2 pkg/*.h pkg/*.patch
 cd ..
 # exit
  tar -cvjf "genkernel-${GK_V}.tar.bz2" "genkernel-${GK_V}/"
-# 
+# exit
+ scp "genkernel-${GK_V}.tar.bz2" wolf31o2.org:/var/www/wolf31o2.org/sources/genkernel
+# exit
+

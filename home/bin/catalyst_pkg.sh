@@ -17,4 +17,7 @@ chmod -x README AUTHORS ChangeLog* COPYING
 cd ..
 # exit
  tar -cvjf "catalyst-${CLST_V}.tar.bz2" "catalyst-${CLST_V}/"
-# 
+# exit
+ scp "catalyst-${CLST_V}.tar.bz2" wolf31o2.org:/var/www/wolf31o2.org/sources/catalyst
+# exit
+
