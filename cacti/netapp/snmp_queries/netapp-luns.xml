@@ -1,6 +1,7 @@
 <interface>
 	<name>Get NetApp LUNs</name>
 	<description>Queries a Filer for a list of monitorable LUNs</description>
+<!--	<oid_uptime>.1.3.6.1.4.1.789.1.2.1.1.0</oid_uptime> -->
 	<oid_index>.1.3.6.1.4.1.789.1.17.15.2.1.1</oid_index>
 	<oid_num_indexes>.1.3.6.1.4.1.789.1.17.15.1.0</oid_num_indexes>
 	<index_order>lunName:lunDescr:lunIndex</index_order>
