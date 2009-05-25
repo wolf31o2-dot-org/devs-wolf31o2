@@ -6,11 +6,10 @@
 	email = wolf31o2@wolf31o2.org
 	signingkey = 84B7E981
 [color]
-	branch = auto
-	diff = auto
-	status = auto
 	ui = auto
 [format]
 	numbered = auto
 [pack]
 	threads = 0
+[push]
+	default = current
