@@ -1,0 +1,9 @@
+# ChangeLog for SNMP scripts
+# Copyright 1999-2009 Chris Gianelloni; Distributed under the GPL v2
+# $Id$
+
+  17 Jun 2009; Chris Gianelloni <wolf31o2@wolf31o2.org> +README.txt,
+  +fetch_mail_statistics.pl, +snmpd.conf:
+  Adding a new section for SNMP snippets and extensions for enabling
+  additional monitoring capabilities to Linux machines.
+
