@@ -2,6 +2,10 @@
 # Copyright 1999-2009 Chris Gianelloni; Distributed under the GPL v2
 # $Id$
 
+  17 Jun 2009; Chris Gianelloni <wolf31o2@wolf31o2.org> +iostat.README,
+  +iostat.crond, +iostat.pl, +iostat-collector.sh, snmpd.conf:
+  Adding iostat.pl and supporting files.
+
   17 Jun 2009; Chris Gianelloni <wolf31o2@wolf31o2.org> snmpd.conf:
   Adding the snmpd.conf snippet for fetch_mail_statistics.pl extension.
 

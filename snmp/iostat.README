@@ -1,0 +1,7 @@
+Simple installation instructions:
+
+- iostat.crond to /etc/cron.d
+- iostat-collector.sh to /usr/local/sbin
+- iostat.pl to /usr/local/sbin
+- add iostat.pl section to snmpd.conf and restart snmpd
+
