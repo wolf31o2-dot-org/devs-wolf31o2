@@ -1,6 +1,19 @@
 # ChangeLog for NetApp Cacti scripts
-# Copyright 2008-2008 Chris Gianelloni; Distributed under the GPL v2
-# $Header: $
+# Copyright 1999-2009 Chris Gianelloni; Distributed under the GPL v2
+# $Id$
+
+  17 Jun 2009; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  +resource/script_server/netapp-luns.xml,
+  +resource/script_server/netapp-volumes.xml,
+  +resource/snmp_queries/netapp-luns.xml,
+  +resource/snmp_queries/netapp-volumes.xml, -script_server/netapp-luns.xml,
+  -script_server/netapp-volumes.xml, -snmp_queries/netapp-luns.xml,
+  -snmp_queries/netapp-volumes.xml:
+  Move the script_server and snmp_queries sections under resource.
+
+  17 Jun 2009; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  snmp_queries/netapp-luns.xml:
+  Remove lunDescr from the index_order list.
 
   25 Apr 2009; Chris Gianelloni <wolf31o2@wolf31o2.org> netapp-luns.xml,
   netapp-volumes.xml:

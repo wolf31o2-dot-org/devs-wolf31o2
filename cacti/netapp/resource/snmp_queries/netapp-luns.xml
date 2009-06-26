@@ -1,0 +1,91 @@
+<interface>
+	<name>Get NetApp LUNs</name>
+	<description>Queries a Filer for a list of monitorable LUNs</description>
+<!--	<oid_uptime>.1.3.6.1.4.1.789.1.2.1.1.0</oid_uptime> -->
+	<oid_index>.1.3.6.1.4.1.789.1.17.15.2.1.1</oid_index>
+	<oid_num_indexes>.1.3.6.1.4.1.789.1.17.15.1.0</oid_num_indexes>
+	<index_order>lunName:lunIndex</index_order>
+	<index_order_type>numeric</index_order_type>
+	<index_title_format>|chosen_order_field|</index_title_format>
+
+	<fields>
+		<lunIndex>
+			<name>Index</name>
+			<direction>input</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.17.15.2.1.1</oid>
+		</lunIndex>
+		<lunName>
+			<name>Name of this LUN</name>
+			<direction>input</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.17.15.2.1.2</oid>
+		</lunName>
+		<lunDescr>
+			<name>Description of this LUN</name>
+			<direction>input</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.17.15.2.1.3</oid>
+		</lunDescr>
+		<lunSize>
+			<name>Size of the LUN</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.17.15.2.1.28</oid>
+		</lunSize>
+		<lunOps>
+			<name>Total Operations on this LUN</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.17.15.2.1.29</oid>
+		</lunOps>
+		<lunReadBytes>
+			<name>Bytes Read</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.17.15.2.1.30</oid>
+		</lunReadBytes>
+		<lunWriteBytes>
+			<name>Bytes Written</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.17.15.2.1.31</oid>
+		</lunWriteBytes>
+		<lunErrors>
+			<name>Errors</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.17.15.2.1.32</oid>
+		</lunErrors>
+		<lunReadOps>
+			<name>LUN Read Operations</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.17.15.2.1.33</oid>
+		</lunReadOps>
+		<lunWriteOps>
+			<name>LUN Write Operations</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.17.15.2.1.34</oid>
+		</lunWriteOps>
+		<lunOtherOps>
+			<name>Other LUN Operations</name>
+			<direction>output</direction>
+			<method>walk</method>
+			<source>value</source>
+			<oid>.1.3.6.1.4.1.789.1.17.15.2.1.35</oid>
+		</lunOtherOps>
+
+	</fields>
+</interface>
