@@ -2,6 +2,14 @@
 # Copyright 1999-2009 Chris Gianelloni; Distributed under the GPL v2
 # $Id$
 
+  07 Jul 2009; Chris Gianelloni <wolf31o2@wolf31o2.org> +iostat/README.txt,
+  -iostat/iostat.README, +iostat/snmpd.conf, snmpd.conf:
+  Rename the iostat.README and move the example iostat snmpd.conf snippet
+  into its directory. I modifed the iostat.pl script to use the ucd/net
+  extension area for its OID, rather than using the experimental OID it uses
+  by default, so you should not have any conflicts if you're using scripts
+  from this repository.
+
   07 Jul 2009; Chris Gianelloni <wolf31o2@wolf31o2.org> -iostat.README,
   -iostat.crond, -iostat.pl, -iostat-collector.sh, +iostat/iostat.README,
   +iostat/iostat.crond, +iostat/iostat.pl, +iostat/iostat-collector.sh:
