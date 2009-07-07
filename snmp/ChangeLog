@@ -2,6 +2,12 @@
 # Copyright 1999-2009 Chris Gianelloni; Distributed under the GPL v2
 # $Id$
 
+  07 Jul 2009; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  -fetch_mail_statistics.pl, +postfix/fetch_mail_statistics.pl,
+  +postfix/snmpd.conf, -snmpd.conf:
+  Moving the fetch_mail_statistics.pl script and companion snmpd.conf
+  snippet to its own directory.
+
   07 Jul 2009; Chris Gianelloni <wolf31o2@wolf31o2.org> +iostat/README.txt,
   -iostat/iostat.README, +iostat/snmpd.conf, snmpd.conf:
   Rename the iostat.README and move the example iostat snmpd.conf snippet
