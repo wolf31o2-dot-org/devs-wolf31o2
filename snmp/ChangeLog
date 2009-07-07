@@ -2,6 +2,11 @@
 # Copyright 1999-2009 Chris Gianelloni; Distributed under the GPL v2
 # $Id$
 
+  07 Jul 2009; Chris Gianelloni <wolf31o2@wolf31o2.org> -iostat.README,
+  -iostat.crond, -iostat.pl, -iostat-collector.sh, +iostat/iostat.README,
+  +iostat/iostat.crond, +iostat/iostat.pl, +iostat/iostat-collector.sh:
+  Moving iostat stuff into its own directory.
+
   17 Jun 2009; Chris Gianelloni <wolf31o2@wolf31o2.org> iostat.README:
   Add source information for iostat.
 
