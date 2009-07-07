@@ -3,6 +3,20 @@
 # $Id$
 
   07 Jul 2009; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  +mibs/windows/accserv.mib, +mibs/windows/authserv.mib,
+  +mibs/windows/dhcp.mib, +mibs/windows/ftp.mib, +mibs/windows/hostmib.mib,
+  +mibs/windows/http.mib, +mibs/windows/inetsrv.mib,
+  +mibs/windows/ipforwd.mib, +mibs/windows/lmmib2.mib,
+  +mibs/windows/mcastmib.mib, +mibs/windows/mib_ii.mib,
+  +mibs/windows/mipx.mib, +mibs/windows/mripsap.mib, +mibs/windows/msft.mib,
+  +mibs/windows/msipbtp.mib, +mibs/windows/msiprip2.mib,
+  +mibs/windows/nipx.mib, +mibs/windows/rfc2571.mib, +mibs/windows/smi.mib,
+  +mibs/windows/wfospf.mib, +mibs/windows/wins.mib:
+  Adding Windows MIBs. I cannot recall which version of Windows that this
+  came from, but will reconcile them with the ones shipped with Windows 7,
+  as soon as I find the time.
+
+  07 Jul 2009; Chris Gianelloni <wolf31o2@wolf31o2.org>
   +extensions/postfix/README.txt:
   Adding README.txt for the postfix stats script.
 
