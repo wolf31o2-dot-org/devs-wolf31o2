@@ -3,6 +3,17 @@
 # $Id$
 
   07 Jul 2009; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  +extensions/iostat/README.txt, +extensions/iostat/iostat.crond,
+  +extensions/iostat/iostat.pl, +extensions/iostat/iostat-collector.sh,
+  +extensions/iostat/snmpd.conf,
+  +extensions/postfix/fetch_mail_statistics.pl,
+  +extensions/postfix/snmpd.conf, -iostat/README.txt, -iostat/iostat.crond,
+  -iostat/iostat.pl, -iostat/iostat-collector.sh, -iostat/snmpd.conf,
+  -postfix/fetch_mail_statistics.pl, -postfix/snmpd.conf:
+  Move postfix/iostat under extensions, to provide a better layout for the
+  addition on other SNMP-related stuff.
+
+  07 Jul 2009; Chris Gianelloni <wolf31o2@wolf31o2.org>
   -fetch_mail_statistics.pl, +postfix/fetch_mail_statistics.pl,
   +postfix/snmpd.conf, -snmpd.conf:
   Moving the fetch_mail_statistics.pl script and companion snmpd.conf
