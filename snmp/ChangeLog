@@ -3,6 +3,10 @@
 # $Id$
 
   07 Jul 2009; Chris Gianelloni <wolf31o2@wolf31o2.org>
+  +extensions/postfix/README.txt:
+  Adding README.txt for the postfix stats script.
+
+  07 Jul 2009; Chris Gianelloni <wolf31o2@wolf31o2.org>
   +extensions/iostat/README.txt, +extensions/iostat/iostat.crond,
   +extensions/iostat/iostat.pl, +extensions/iostat/iostat-collector.sh,
   +extensions/iostat/snmpd.conf,
