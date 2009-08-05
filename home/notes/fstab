@@ -1,0 +1,49 @@
+# /etc/fstab: $Id$
+# 
+# defaults = async,atime,auto,dev,exec,nouser,rw,suid
+# nofail = does not send error on failure
+# mand = allow mandatory locks (fcntl(2)
+# _netdev = requires network devices
+# noatime,nodiratime,norelatime
+# relatime = relative atime to mtime/ctime
+# owner/group = sets nodev,nosuid
+# sync = synchronous on all access
+# dirsync = creat,link,unlink,symlink,mkdir,rmdir,mknod,rename all trigger
+# user = sets noexec,nosuid,nodev
+# users = all users can mount/umount
+# 
+# errors=continue,remount-ro,panic
+# acl = support for POSIX ACL
+# user_xattr = support user Extended Attributes or not
+#
+# ext3:
+# journal=update - update to latest journal version
+# data = journal,ordered,writeback - ordered is default, writeback is fastest
+# commit = number of seconds between data/metadata syncs, default 5, 0 means default
+#
+# fat:
+# tz=UTC
+# iso9660:
+# utf8 = convert 16-bit Unicode to UTF-8
+# tmpfs:
+# size = <size>[k|m|g]
+# mode = octal
+# vfat:
+# utf8
+# usbfs:
+# devuid,devgid,devmode = sets perms on dev files
+# busuid,budgid,busmode = sets perms on bus files
+# listuid,listgid,listmode = sets perms on devices file
+#
+# loop:
+# itercountk = how many thousand interations of AES-256 to hash key
+# encryption = none,xor,aes(128),aes192,aes256
+# gpghome = location of GPG HOME for PKI used for key
+# gpgkey = file which contains real keys (post-PKI) used for device
+# phash = password hash type: sha256,sha384,sha512,rmd160
+# loinit = number to pass to cipher transfer function, otherwise unused
+# offset = bytes to data start
+# passwdfd = read passphrase from fd specified instead of file
+# cleartextkey = file name of key
+# pseed = encryption passphrase seed, not used in multi-key mode
+# 
