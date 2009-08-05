@@ -1,0 +1,19 @@
+#!/bin/bash
+# $Id$
+
+# Most code shamelessly stolen from dobin and newbin
+newcrond() {
+	if [[ -z ${T} ]] || [[ -z ${2} ]] ; then
+		echo "$0: Need two arguments, old file and new file" 1>&2
+		exit 1
+	fi
+
+	if [ ! -e "$1" ] ; then
+		echo "!!! ${0##*/}: $1 does not exist" 1>&2
+		exit 1
+	fi
+
+	rm -rf "${T}/${2}" && \
+	cp -f "${1}" "${T}/${2}" && \
+	docrond "${T}/${2}"
+}
