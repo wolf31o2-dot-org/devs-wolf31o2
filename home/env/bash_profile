@@ -1,7 +1,18 @@
-# $HOME/.bash_profile
 # $Id$
 
 # This file is sourced by bash for login shells.  The following line
 # runs your .bashrc and is recommended by the bash info pages.
 [[ -f ~/.bashrc ]] && . ~/.bashrc
+
+do_keychain=${do_keychain:-false}
+
+if $do_keychain ; then
+	if keychain --quick --quiet --inherit any --nolock \
+		--agents ssh --ignore-missing --noask --stop others \
+		~/.ssh/id_rsa ~/.ssh/id_dsa; then
+		for x in ~/.keychain/${HOSTNAME}-sh{,-*}; do
+			[[ -f "${x}" ]] && source "${x}"
+		done
+	fi
+fi
 
