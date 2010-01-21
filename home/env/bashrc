@@ -19,15 +19,21 @@ export ECHANGELOG_USER="Chris Gianelloni <wolf31o2@wolf31o2.org>"
 # These are used for signing/verifying Manifests
 export PORTAGE_GPG_DIR="~/.gnupg/"
 export PORTAGE_GPG_KEY="84B7E981"
-
+# Anything else looking for gnupg
 export GPG_HOME="~/.gnupg/"
+# Setting my default language/locale
+export LANG="en_US.UTF-8"
+# We do not set this so we can override it
+#export LC_ALL="en_US.UTF-8"
 
-export LC_ALL="en_US.UTF-8"
-
-export PATH="${HOME}/bin:${PATH}"
+# Check if we have a bin directory, and add it to the beginning of the PATH
+if [ -d "${HOME}/bin" ] ; then
+	export PATH="${HOME}/bin:${PATH}"
+fi
 
 # aliases
 alias ll="ls -l"
+alias lla="ls -al"
 alias cdrecord="/usr/bin/wodim -v -tao dev=/dev/sr0 driveropts=burnfree"
 alias dvdrecord="/usr/bin/wodim -v -sao dev=/dev/sr0 driveropts=burnfree"
 
@@ -41,11 +47,11 @@ function gcommit() {
 }
 # This splits "emerge --info" output for USE into separate lines
 function emerge() {
-	args=$*
-	if [[ "${1}" == "--info" ]] ; then
-		/usr/bin/emerge --info $args | sed -e '/^USE=/s/" \([A-Z]\+\)/"\n\1/g'
+	_args=$*
+	if [[ "${_args}" =~ "--info" ]] ; then
+		/usr/bin/emerge ${_args} | sed -e '/^USE=/s/" \([A-Z]\+\)/"\n\1/g'
 	else
-		/usr/bin/emerge $args
+		/usr/bin/emerge ${_args}
 	fi
 }
 
