@@ -1,0 +1,7 @@
+# This is a list of annoyances that I'd love to see fixed, whether by me,
+# someone else, or upstream.  Try to remove anything that gets fixed, and feel
+# free to add something that annoys you here, if you've got access.  Just be
+# kind enough to tag the comment with your nick, so I can let you know if its
+# status changes.
+- Portage:
+ - in-tree (at least) support for kernel builds
