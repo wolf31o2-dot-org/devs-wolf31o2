@@ -1,0 +1,8 @@
+# Simple TODO
+- Cacti improvements
+ - Integration plugin
+ - Portage plugin
+- Nagios improvements
+ - nagios-plugins eclass
+ - split net-analyzer/nagios-plugins ebuild
+
